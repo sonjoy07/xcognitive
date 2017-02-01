@@ -36,6 +36,8 @@
 
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/app.js"></script>
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/dashboard.js"></script>
+        <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckfinder/ckfinder.js"></script>
         <?php
 // echo "<pre>";
 // print_r($asset);
