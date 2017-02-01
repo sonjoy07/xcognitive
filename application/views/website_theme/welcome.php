@@ -1,18 +1,6 @@
-<?php include_once __DIR__.'/header.php';?>
+<?php include_once __DIR__ . '/header.php'; ?>
 <section class="intro">
-    <!--<div class="homepage-hero-module">-->
-    <!--<div class="video-container">-->
-    <!--<div class="filter"></div>-->
-    <!--<video autoplay loop class="fillWidth">-->
-        <!--<source src="MP4/Healthy-Life.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.-->
-        <!--&lt;!&ndash;<source src="WEBM/Healthy-Life.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.&ndash;&gt;-->
-    <!--</video> -->
-    <!--<div class="poster hidden">-->
-        <!--<img src="" alt="">-->
-    <!--</div>-->
-    <!---->
-    <!--</div>                -->
-    <!--</div>-->                 <div class="container">
+    <div class="text-content">
         <h3>discovered the undoubtable</h3>
         <hr />
         <h3 class="intro_head">sanctos a sapiente alienos esse arbitrantur.</h3>
@@ -24,6 +12,9 @@
         </div>
         <a href="">Universa enim illorum ratione cum tota vestra confligendum puto.</a>
     </div>
+    <video src="<?= $theme_asset_url ?>MP4/bd-video.mp4" autoplay="auto" loop="loop">
+        <img src="<?= $theme_asset_url ?>images/bg.png" data-src="images/bg.png" class="img-bg">
+    </video>
 </section>
 <section class="consoling">
     <ul>
@@ -436,4 +427,4 @@
         <p>Duo enim genera quae erant, fecit tria.</p>
     </div>
 </section>
-<?php include_once __DIR__.'/footer.php';?>
+<?php include_once __DIR__ . '/footer.php'; ?>

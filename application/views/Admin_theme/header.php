@@ -36,6 +36,16 @@
 
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/app.js"></script>
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/dashboard.js"></script>
+        <?php
+// echo "<pre>";
+// print_r($asset);
+// echo "</pre>";
+        if (isset($glosary))
+            foreach ($glosary->css_files as $file):
+                ?>
+                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+
+            <?php endforeach; ?>
 	<!-- /theme JS files -->
 
 </head>
