@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/main.css">
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/bootstrap.min.css">
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="<?=$theme_asset_url?>css/login-register.css">
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/style.css">
         <script src="<?=$theme_asset_url?>js/vendor/modernizr-2.8.3.min.js"></script>
         <!--<script src="<?=$theme_asset_url?>js/vendor/jquery.min.js"></script>-->
@@ -38,7 +39,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img src="<?=$theme_asset_url?>images/logo.png" alt="" height="80"/></a>
+                            <a class="navbar-brand" href="<?=  site_url('website')?>"><img src="<?=$theme_asset_url?>images/logo.png" alt=""/></a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,7 +51,7 @@
                                 <li><a href="#">Self Test</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="#"  type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

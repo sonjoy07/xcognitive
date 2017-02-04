@@ -1453,3 +1453,6 @@ input[type="submit"].btn.btn-mini {
 	margin-left: 550px;
 	z-index: 1000;
 }
+.form-input-box input{
+    height: 30px!important;
+}

@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+	<title><?=$Title?></title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -38,6 +38,12 @@
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/dashboard.js"></script>
         <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckfinder/ckfinder.js"></script>
+        <!-- Theme JS files -->
+	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/forms/selects/select2.min.js"></script>
+
+	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/app.js"></script>
+	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/datatables_basic.js"></script>
         <?php
 // echo "<pre>";
 // print_r($asset);

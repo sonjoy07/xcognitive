@@ -1,8 +1,41 @@
+<?php
+$login = array(
+    'name'	=> 'login',
+    'id'	=> 'login',
+    'value' => set_value('login'),
+    'maxlength'	=> 80,
+    'size'	=> 30,
+    'class' =>'form-control',
+);
+if ($login_by_username AND $login_by_email) {
+    $login_label = 'Email or login';
+} else if ($login_by_username) {
+    $login_label = 'Login';
+} else {
+    $login_label = 'Email';
+}
+$password = array(
+    'name'	=> 'password',
+    'id'	=> 'password',
+    'size'	=> 30,
+    'class' =>'form-control'
+);
+$remember = array(
+    'name'	=> 'remember',
+    'id'	=> 'remember',
+    'value'	=> 1,
+    'checked'	=> set_value('remember'),
+    'style' => 'margin:0;padding:0',
+);
+$captcha = array(
+    'name'	=> 'captcha',
+    'id'	=> 'captcha',
+    'maxlength'	=> 8,
+);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from demo.interface.club/limitless/layout_1/LTR/default/login_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Jan 2017 05:16:56 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +116,8 @@
 				<div class="content">
 
 					<!-- Simple login form -->
-					<form action="http://demo.interface.club/limitless/layout_1/LTR/default/index.html">
+<!--					<form action="http://demo.interface.club/limitless/layout_1/LTR/default/index.html">-->
+                    <?php echo form_open($this->uri->uri_string()); ?>
 						<div class="panel panel-body login-form">
 							<div class="text-center">
 								<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
@@ -91,20 +125,23 @@
 							</div>
 
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="text" class="form-control" placeholder="Username">
+                                <?php echo form_input($login); ?>
+<!--								<input type="text" class="form-control" placeholder="Username">-->
 								<div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="password" class="form-control" placeholder="Password">
+                                <?php echo form_password($password); ?>
+<!--								<input type="password" class="form-control" placeholder="Password">-->
 								<div class="form-control-feedback">
 									<i class="icon-lock2 text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group">
+<!--                                --><?php //echo form_submit('submit', 'Let me in'); ?>
 								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
 							</div>
 
@@ -112,7 +149,8 @@
 								<a href="login_password_recover.html">Forgot password?</a>
 							</div>
 						</div>
-					</form>
+
+                    <?php echo form_close(); ?>
 					<!-- /simple login form -->
 
 

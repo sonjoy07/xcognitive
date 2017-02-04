@@ -36,18 +36,17 @@
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li class="active"><a href="<?=  site_url('admin')?>"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                     <li>
-                        <a href=""><i class="icon-stack2"></i> <span>Page layouts</span></a>
+                        <a href=""><i class="icon-stack2"></i> <span>Blogs</span></a>
                         <ul>
-                            <li><a href="<?=  site_url('admin')?>">Fixed navbar</a></li>
-                            <li><a href="layout_navbar_sidebar_fixed.html">Fixed navbar &amp; sidebar</a></li>
-                            <li><a href="layout_sidebar_fixed_native.html">Fixed sidebar native scroll</a></li>
-                            <li><a href="layout_navbar_hideable.html">Hideable navbar</a></li>
-                            <li><a href="layout_navbar_hideable_sidebar.html">Hideable &amp; fixed sidebar</a></li>
-                            <li><a href="layout_footer_fixed.html">Fixed footer</a></li>
-                            <li class="navigation-divider"></li>
-                            <li><a href="boxed_default.html">Boxed with default sidebar</a></li>
-                            <li><a href="boxed_mini.html">Boxed with mini sidebar</a></li>
-                            <li><a href="boxed_full.html">Boxed full width</a></li>
+                            <li><a href="<?=  site_url('admin/blogCategory')?>">Add Category</a></li>
+                            <li><a href="<?=  site_url('admin/add_blog')?>">Add Blogs</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><i class="icon-stack2"></i> <span>Homepage</span></a>
+                        <ul>
+                            <li><a href="<?=  site_url('admin/add_subject')?>">Add Subject</a></li>
+                            <li><a href="<?=  site_url('admin/settings')?>">Settings</a></li>
                         </ul>
                     </li>
                     

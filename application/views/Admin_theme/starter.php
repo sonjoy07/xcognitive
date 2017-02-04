@@ -43,3 +43,12 @@
         </div>
     </div>
 </div>
+<style>
+    .texteditor{
+        visibility: visible!important;
+    }
+    iframe{
+        height: 100px;
+        width: 100px;
+    }
+</style>

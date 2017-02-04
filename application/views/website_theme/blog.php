@@ -1,4 +1,4 @@
-<?php include_once __DIR__.'/header.php';?>
+<?php include_once __DIR__ . '/header.php'; ?>
 <section class="blog_home">
     <div class="container">
         <div class="col-sm-9">
@@ -9,7 +9,7 @@
 
             <!--&lt;!&ndash; Author &ndash;&gt;-->
             <!--<p class="lead">-->
-                <!--by <a href="#">Start Bootstrap</a>-->
+            <!--by <a href="#">Start Bootstrap</a>-->
             <!--</p>-->
 
             <!--<hr>-->
@@ -20,179 +20,47 @@
             <!--<hr>-->
 
             <!-- Preview Image -->
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <img class="img-responsive" src="<?= base_url() ?>uploads/blog_image/<?= $get_last_blog->blog_image ?>" alt="">
             <hr>
-            <h1 class="lead"><a href="<?= site_url('website/blog_details')?>">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero,
-                obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos
-                magni recusandae laborum minus inventore?</a></h1>
+            <h1 class="lead"><a href="<?= site_url('website/blog_details/' . $get_last_blog->blog_id) ?>"><?= $get_last_blog->blog_title ?></a></h1>
 
             <!-- Date/Time -->
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+            <p><span class="glyphicon glyphicon-time"></span> Posted on <?= date('F d, Y H:i A ', strtotime($get_last_blog->published_date)) ?></p>
             <p class="lead">
-                by <a href="#">Start Bootstrap</a>
+                by <?= $get_last_blog->auther_name ?>
             </p>
             <hr>
-            <div class="row">
+            <div class="row"> 
+                <?php foreach ($get_some_blog as $blog) { ?> 
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$24.99</h4>
-                            <h4><a href="#">First Product</a>
-                            </h4>
-                            <p>See more snippets like this online store item at <a target="_blank"
-                                                                                   href="http://www.bootsnipp.com">Bootsnipp
-                                - http://bootsnipp.com</a>.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">15 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </p>
+                <div class="col-sm-4 col-lg-4 col-md-4" >
+                    <div class="thumbnail" >
+                            <img src="<?= base_url() ?>uploads/blog_image/<?= $blog->blog_image ?>" width="320"alt="">
+                            <div class="caption">
+                                <!--<h4 class="pull-right">$24.99</h4>-->
+                                <h4><a href="<?= site_url('website/blog_details/' . $blog->blog_id) ?>"><?= $blog->blog_title ?></a>
+                                </h4>
+                                <?= $blog->short_description ?>
+                            </div>
+                            <!--                        <div class="ratings">
+                                                        <p class="pull-right">15 reviews</p>
+                                                        <p>
+                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <span class="glyphicon glyphicon-star"></span>
+                                                        </p>
+                                                    </div>-->
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$64.99</h4>
-                            <h4><a href="#">Second Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">12 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$74.99</h4>
-                            <h4><a href="#">Third Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">31 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$84.99</h4>
-                            <h4><a href="#">Fourth Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">6 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$94.99</h4>
-                            <h4><a href="#">Fifth Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">18 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="aside-widget">
-                <header>
-                    <h3>Latest Post</h3>
-                </header>
-                <div class="body">
-                    <ul class="tales-list">
-                        <li><a href="index.html">Email Encryption Explained</a></li>
-                        <li><a href="#">Selling is a Function of Design.</a></li>
-                        <li><a href="#">It’s Hard To Come Up With Dummy Titles</a></li>
-                        <li><a href="#">Why the Internet is Full of Cats</a></li>
-                        <li><a href="#">Last Made-Up Headline, I Swear!</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="aside-widget">
-                <header>
-                    <h3>Category</h3>
-                </header>
-                <div class="body">
-                    <ul class="tales-list">
-                        <li><a href="index.html">Email Encryption Explained</a></li>
-                        <li><a href="#">Selling is a Function of Design.</a></li>
-                        <li><a href="#">It’s Hard To Come Up With Dummy Titles</a></li>
-                        <li><a href="#">Why the Internet is Full of Cats</a></li>
-                        <li><a href="#">Last Made-Up Headline, I Swear!</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="aside-widget">
-                <header>
-                    <h3>Archives</h3>
-                </header>
-                <div class="body">
-                    <ul class="tales-list">
-                        <li><a href="index.html">Email Encryption Explained</a></li>
-                        <li><a href="#">Selling is a Function of Design.</a></li>
-                        <li><a href="#">It’s Hard To Come Up With Dummy Titles</a></li>
-                        <li><a href="#">Why the Internet is Full of Cats</a></li>
-                        <li><a href="#">Last Made-Up Headline, I Swear!</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                <?php } ?>
+            
     </div>
+</div>
+<?php include_once __DIR__ . '/widget.php';?>
+</div>
 </section>
 <section class="useful_information">
     <div class="container">
@@ -200,26 +68,26 @@
             <h3>USEFUL LINKS</h3>
             <hr/>
             <ul style="list-style-type:square">
-                        <span class="col-md-6">
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                        </span>
                 <span class="col-md-6">
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                        </span>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                </span>
+                <span class="col-md-6">
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                    <li><a href="">link</a></li>
+                </span>
 
             </ul>
         </div>
@@ -244,4 +112,4 @@
         </div>
     </div>
 </section>
-<?php include_once __DIR__.'/footer.php';?>
+<?php include_once __DIR__ . '/footer.php'; ?>

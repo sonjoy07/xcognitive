@@ -31,7 +31,13 @@
             <div class="content">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <form class="form-horizontal" action="#">
+                        <?php
+                            $attributes = array(
+                                'class' => 'form-horizontal',
+                                'name' => 'form',
+                                'method' => 'post');
+                            echo form_open_multipart('admin/save_blog', $attributes)
+                            ?>
                             <fieldset class="content-group">
                                 <legend class="text-bold">Basic inputs</legend>
 
@@ -42,9 +48,20 @@
                                     </div>
                                 </div>   
                                 <div class="form-group">
+                                    <label class="control-label col-lg-2">Category List</label>
+                                    <div class="col-lg-10">
+                                        <select name="category_id" id="" class="form-control">
+                                            <option value="">Select Category</option>
+                                            <?php foreach($get_category as $category){?>
+                                            <option value="<?=$category->category_id?>"><?=$category->category_name?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>   
+                                <div class="form-group">
                                     <label class="control-label col-lg-2">Author Title</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="author_title" placeholder="Author Title...">
+                                        <input type="text" class="form-control" name="auther_name" placeholder="Author Title...">
                                     </div>
                                 </div>   
                                 <div class="form-group">
@@ -64,13 +81,23 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-2">Blog Short Description</label>
                                     <div class="col-lg-10">
-                                        <textarea  class="form-control" name="blog_short_description" placeholder="Blog Short Description"><?php echo $this->ckeditor->editor("blog_short_description");?></textarea>
+                                        <?php echo $this->ckeditor->editor("short_description");?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-2">Blog Long Description</label>
                                     <div class="col-lg-10">
-                                        <textarea class="form-control" name="blog_long_description" placeholder="Blog Long Description"><?php echo $this->ckeditor->editor("blog_long_description");?></textarea>
+                                        <?php echo $this->ckeditor->editor("long_description");?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Publication Status</label>
+                                    <div class="col-lg-10">
+                                        <select name="publication_status" id="" class="form-control">
+                                            <option value="">Select Publication Status</option>
+                                            <option value="1">Published</option>
+                                            <option value="2">Unpublished</option>
+                                        </select>
                                     </div>
                                 </div>
                             </fieldset>
@@ -82,7 +109,7 @@
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
                             </div>
-                        </form>
+                         <?= form_close(); ?>
                     </div>
                     <div class="panel-body"></div>
                 </div>
