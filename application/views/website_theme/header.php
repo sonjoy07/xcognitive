@@ -57,7 +57,7 @@
                                     <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> Sonjoy <i class="caret"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li><a href="">Profile</a></li>
-                                            <li><a href="">Logout</a></li>
+                                            <li><a href="<?=site_url('user_login/logout')?>">Logout</a></li>
                                         </ul>
                                     </li>
                                 <?php }else{?>

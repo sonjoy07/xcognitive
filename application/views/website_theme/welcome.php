@@ -2,15 +2,23 @@
 
 <section class="intro">
     <div class="text-content">
-        <h1><?= $settings->welcome_message ?>
-            <?= var_dump($_SESSION)?></h1>
+        <h1><?= $settings->welcome_message ?></h1>
         <hr/>
         <h3 class="intro_head"><?= $settings->introduction ?></h3>
         <div class="intro_button">
+            <?php
+            if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
+            ?>
             <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>
                 Chat</a>
-            <a href=""><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                login</a>
+            <a href="" ><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                Appoinment</a>
+            <?php }else{?>
+                <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-comment-o" aria-hidden="true"></i>
+                    Chat</a>
+                <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    Appoinment</a>
+            <?php }?>
         </div>
         <!--        <a href="">Universa enim illorum ratione cum tota vestra confligendum puto.</a>-->
     </div>

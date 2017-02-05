@@ -142,7 +142,7 @@
                         </div>
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form method="post" action="<?=site_url('website/checklogin')?>" accept-charset="UTF-8">
+                            <form method="post" action="<?=site_url('user_login')?>" accept-charset="UTF-8">
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="login">
                                 <input id="password" class="form-control" type="password" placeholder="Password"
                                        name="password">
