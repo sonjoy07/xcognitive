@@ -45,15 +45,15 @@ function openRegisterModal(){
 }
 
 function loginAjax(){
-    /*   Remove this comments when moving to server
+    // /*   Remove this comments when moving to server
     $.post( "/login", function( data ) {
             if(data == 1){
-                window.location.replace("/home");            
+                window.location.replace("/home");
             } else {
-                 shakeModal(); 
+                 shakeModal();
             }
         });
-    */
+
 
 /*   Simulate error message from the server   */
      shakeModal();

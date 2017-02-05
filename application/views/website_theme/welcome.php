@@ -1,7 +1,9 @@
 <?php include_once __DIR__ . '/header.php'; ?>
+
 <section class="intro">
     <div class="text-content">
-        <h1><?= $settings->welcome_message ?></h1>
+        <h1><?= $settings->welcome_message ?>
+            <?= var_dump($_SESSION)?></h1>
         <hr/>
         <h3 class="intro_head"><?= $settings->introduction ?></h3>
         <div class="intro_button">
@@ -12,7 +14,8 @@
         </div>
         <!--        <a href="">Universa enim illorum ratione cum tota vestra confligendum puto.</a>-->
     </div>
-    <video src="<?= base_url() ?>assets/uploads/video/<?= $settings->bg_video ?>" autoplay="auto" loop="loop">
+<!--    <video src="--><?//= base_url() ?><!--assets/uploads/video/--><?//= $settings->bg_video ?><!--" autoplay="auto" loop="loop">-->
+    <video src="<?= $theme_asset_url ?>MP4/bd-video.mp4" autoplay="auto" loop="loop">
         <img src="<?= $theme_asset_url ?>images/bg.png" data-src="images/bg.png" class="img-bg">
     </video>
 </section>

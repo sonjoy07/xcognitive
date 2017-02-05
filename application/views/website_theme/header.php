@@ -43,7 +43,7 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="collapse navbar-collapse main_menu" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a href="<?= site_url('website/expert')?>">Experts <span class="sr-only">(current)</span></a></li>
                                 <li><a href="#">Discussions</a></li>
@@ -51,7 +51,18 @@
                                 <li><a href="#">Self Test</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#"  type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-lock"></i> Login</a></li>
+                                <?php
+                                if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
+                                ?>
+                                    <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> Sonjoy <i class="caret"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="">Profile</a></li>
+                                            <li><a href="">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                <?php }else{?>
+                                    <li><a href="#"  type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-lock"></i> Login</a></li>
+                                <?php }?>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

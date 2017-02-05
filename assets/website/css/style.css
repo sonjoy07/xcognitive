@@ -48,6 +48,9 @@ video{
 .navbar-nav li a:hover{
     border: 1px solid #00B29A;
 }
+.drop{
+    cursor: pointer;
+}
 .navbar{
     min-height: 82px;
 }
