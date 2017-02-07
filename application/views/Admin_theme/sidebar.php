@@ -39,17 +39,23 @@
                         <a href=""><i class="icon-stack2"></i> <span>Blogs</span></a>
                         <ul>
                             <li><a href="<?=  site_url('admin/blogCategory')?>">Add Category</a></li>
-                            <li><a href="<?=  site_url('admin/add_blog')?>">Add Blogs</a></li>
+                            <li><a href="<?=  site_url('admin/blog_list')?>">Blogs</a></li>
+                        </ul>
+                    </li><li>
+                        <a href=""><i class="icon-stack2"></i> <span>Experts</span></a>
+                        <ul>
+                            <li><a href="<?=  site_url('admin/add_subject')?>">Add Subject</a></li>
+                            <li><a href="<?=  site_url('admin/expert_list')?>">Expert List</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href=""><i class="icon-stack2"></i> <span>Homepage</span></a>
                         <ul>
-                            <li><a href="<?=  site_url('admin/add_subject')?>">Add Subject</a></li>
+
                             <li><a href="<?=  site_url('admin/settings')?>">Settings</a></li>
                         </ul>
                     </li>
-                    
+
                     <li><a href="changelog.html"><i class="icon-list-unordered"></i> <span>Changelog <span class="label bg-blue-400">1.5</span></span></a></li>
                     <li><a href="http://demo.interface.club/limitless/layout_1/RTL/default/index.html"><i class="icon-width"></i> <span>RTL version</span></a></li>
                     <!-- /main -->

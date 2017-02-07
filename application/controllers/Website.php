@@ -30,6 +30,7 @@ class Website extends CI_Controller
         $data['get_blogs'] = $this->website_model->get_published_blog();
         $data['subjects'] = $this->website_model->get_all('subjects');
         $data['settings'] = $this->website_model->get_all_setting();
+        $data['experts'] = $this->website_model->get_experts_info();
         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
         $data['Title'] = 'Xcognitive';
         $data['base_url'] = base_url();
@@ -79,6 +80,15 @@ class Website extends CI_Controller
         $id = $this->website_model->save('comments', $data);
         $info['get_comment'] = $this->common_model->get_all_info_by_id('comments', $id, 'comment_id');
         $this->load->view($this->config->item('WEBSITE_THEME') . 'comments', $info);
+    }
+
+    function expert_details($id){
+        $data['get_expert_info'] = $this->website_model->get_info_by_id($id,'expert_details','expert_id');
+        $data['sidebar_suggestion'] = $this->website_model->get_experts_sidebar_suggestion();
+        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Experts Deailts';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'expert_details', $data);
     }
 
 }

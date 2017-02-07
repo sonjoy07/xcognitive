@@ -155,13 +155,15 @@
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
-                            <form method="post" html="{:multipart=>true}" data-remote="true" action="/register"
+                            <form method="post" html="{:multipart=>true}" data-remote="true" action="<?=site_url('user_login/register')?>"
                                   accept-charset="UTF-8">
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="email" class="form-control" type="text" placeholder="Username" name="username">
+                                <input  class="form-control" type="text" name="user_image">
                                 <input id="password" class="form-control" type="password" placeholder="Password"
                                        name="password">
                                 <input id="password_confirmation" class="form-control" type="password"
-                                       placeholder="Repeat Password" name="password_confirmation">
+                                       placeholder="Repeat Password" name="confirm_password">
                                 <input class="btn  btn-register" type="submit" value="Create account"
                                        name="commit">
                             </form>

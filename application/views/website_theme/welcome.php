@@ -22,8 +22,8 @@
         </div>
         <!--        <a href="">Universa enim illorum ratione cum tota vestra confligendum puto.</a>-->
     </div>
-<!--    <video src="--><?//= base_url() ?><!--assets/uploads/video/--><?//= $settings->bg_video ?><!--" autoplay="auto" loop="loop">-->
-    <video src="<?= $theme_asset_url ?>MP4/bd-video.mp4" autoplay="auto" loop="loop">
+    <video src="<?= base_url() ?>assets/uploads/files/<?= $settings->bg_video ?>" autoplay="auto" loop="loop">
+<!--    <video src="--><?//= $theme_asset_url ?><!--MP4/bd-video.mp4" autoplay="auto" loop="loop">-->
         <img src="<?= $theme_asset_url ?>images/bg.png" data-src="images/bg.png" class="img-bg">
     </video>
 </section>
@@ -44,33 +44,18 @@
         <h3>discovered the undoubtable</h3>
         <hr/>
         <div class="more_details">
+            <?php foreach ($experts as $expert){?>
             <div class="col-sm-4">
-                <img src="<?= $theme_asset_url ?>images/logo.png" alt="..." class="img-circle">
-                <h4>Tom</h4>
-                <p>dentist</p>
+                <img src="<?= base_url() ?>assets/uploads/files/<?=$expert->experts_image?>" alt="..." class="img-circle">
+                <h4><a href="<?=site_url('website/expert_details/'.$expert->expert_id)?>"><?= $expert->expert_name?></a></h4>
+                <p><?=$expert->expert_designation?></p>
                 <div class="contact">
                     <a href=""><i class="fa fa-circle"></i> CHAT</a>
                     <a href="">MESSAGE</a>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <img src="<?= $theme_asset_url ?>images/logo.png" alt="..." class="img-circle">
-                <h4>Tom</h4>
-                <p>dentist</p>
-                <div class="contact">
-                    <a href=""><i class="fa fa-circle"></i> CHAT</a>
-                    <a href="">MESSAGE</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <img src="<?= $theme_asset_url ?>images/logo.png" alt="..." class="img-circle">
-                <h4>Tom</h4>
-                <p>dentist</p>
-                <div class="contact">
-                    <a href=""><i class="fa fa-circle"></i> CHAT</a>
-                    <a href="">MESSAGE</a>
-                </div>
-            </div>
+            <?php }?>
+
 
         </div>
         <h2>discovered the undoubtable</h2>

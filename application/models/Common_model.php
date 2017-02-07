@@ -25,4 +25,12 @@ class Common_model extends CI_Model{
     public function get_all($table,$name){
         return $this->db->order_by($name,'desc')->get($table)->result();
     }
+    function get_all_subject(){
+        $subjects =  $this->db->get('subjects')->result_array();
+        $data = array();
+        foreach ($subjects as $subject){
+            $data[$subject['subject_id']] = $subject['subject_name'];
+        }
+        return $data;
+    }
 }

@@ -100,6 +100,8 @@ video{
     border: 5px solid #fff;
     box-shadow:1px 0px 0px 5px #ECECEC;
     margin-bottom: 8px;
+    height: 110px;
+    width: 110px;
 }
 .expert h4{
     padding: 8px 0;
@@ -603,6 +605,68 @@ footer{
 }
 .details_button a:last-child {
     background: #FBB41B;
+}
+
+.expert_description{
+    padding: 40px 0;
+}
+
+.details_button a:last-child {
+    background: #FBB41B;
+}
+.expert_scoal_details{
+    border-left: 1px dashed #0f0f0f;
+    padding: 20px;
+}
+.expert_scoal_details span{
+    line-height: 2.5em;
+}
+.expert_scoal_details span:last-child{
+    line-height: 4.5em;
+}
+.expert_scoal_details span i{
+    padding: 8px 12px;
+    font-size: 20px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    color: #0f0f0f;
+}
+.similar_list_button{
+    margin-top: 40px;
+}
+
+.similar_list_button a {
+    padding: 6px 10px;
+    border:1px solid #000;
+    color: #000;
+    font-size: 15px;
+}
+.similar_experts_list{
+    background: #f1f1f1;
+    padding: 18px;
+    margin-bottom: 10px;
+}
+.experts_details_social{
+    border-left: 1px dashed #9E9E9E;
+}
+
+.expert_skill,.expert_summary,.similar_experts,.exper_shadow{
+    padding: 30px;
+    box-shadow: 1px 10px 26px 0px #9E9E9E ;
+    margin-bottom: 20px;
+}
+.expert_category_tags ul{
+    list-style: none;
+}.expert_category_tags ul li{
+     display: inline;
+ }
+.expert_category_tags ul li a{
+    padding: 10px 20px;
+    color: #9E9E9E;
+    border: 1px solid #9E9E9E;
+    border-radius: 5px;
+    margin-right: 3px;
+
 }
 .thumbnail{
     min-height: 236px!important;

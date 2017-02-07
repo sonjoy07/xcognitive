@@ -22,10 +22,11 @@ class Admin extends CI_Controller
         $this->load->library('tank_auth');
         $this->load->model('role');
         $this->role->check_access();
-        if (!$this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==1) {         //not logged in
+        if (!$this->tank_auth->is_logged_in()) {         //not logged in
             redirect('login');
             return 0;
         }
+        $this->load->model('checkuser');
         $this->load->library('grocery_CRUD');
         $this->load->library('ckeditor');
         $this->load->library('ckfinder');
@@ -52,7 +53,8 @@ class Admin extends CI_Controller
             ->set_subject('Subject')
             ->set_field_upload('subject_icon')
             ->set_field_upload('icon', 'assets/uploads/files')
-            ->order_by('subject_id', 'desc');
+            ->order_by('subject_id', 'desc')
+            ->unset_jquery();
 //        $crud->unique_fields('name');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -69,7 +71,8 @@ class Admin extends CI_Controller
             ->set_subject('Subject')
             ->set_field_upload('subject_icon')
             ->set_field_upload('icon', 'assets/uploads/files')
-            ->order_by('subject_id', 'desc');
+            ->order_by('subject_id', 'desc')
+            ->unset_jquery();
 //        $crud->unique_fields('name');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -92,7 +95,8 @@ class Admin extends CI_Controller
             ->unset_add()
             ->unset_delete()
             ->unset_read()
-            ->unset_columns('youtube_video');
+            ->unset_columns('youtube_video')
+            ->unset_jquery();
 //        $crud->unique_fields('name');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -107,7 +111,8 @@ class Admin extends CI_Controller
         $crud = new grocery_CRUD();
         $crud->set_table('blog_category')
             ->set_subject('Blog Category')
-            ->order_by('category_id', 'desc');
+            ->order_by('category_id', 'desc')
+            ->unset_jquery();
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
@@ -214,6 +219,46 @@ class Admin extends CI_Controller
         }
         $this->common_model->update('blogs', $data, $id, 'blog_id');
         redirect('admin/blog_list/');
+    }
+
+    function expert_list()
+    {
+        $skills = $this->common_model->get_all_subject();
+        $crud = new grocery_CRUD();
+        $crud->set_table('expert_details')
+            ->set_subject('Expert Details')
+            ->field_type('language','multiselect',
+                array( "english"  => "English", "hindi" => "Hindi", "bangla" => "Bangla"))
+            ->field_type('skills','dropdown',$skills)
+            ->set_field_upload('experts_image')
+            ->set_field_upload('expert', 'assets/uploads/expert')
+
+            ->order_by('expert_id', 'desc')
+            ->unset_jquery();
+//        $crud->unique_fields('name');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+//        $data['get_all_info'] = $this->common_model->get_all('blogs', 'blog_id');
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Xcognetive';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'starter', $data);
+    }
+    function add_expert()
+    {
+        $data['get_subjects'] = $this->common_model->get_all('subjects', 'subject_id');
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Xcognetive';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'expert/add_expert', $data);
+    }
+    function edit_expert()
+    {
+//        $data['get_all_info'] = $this->common_model->get_all('blogs', 'blog_id');
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Xcognetive';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'expert/expert_table', $data);
     }
 
     function image_resize($path, $file, $width, $height)
