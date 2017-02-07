@@ -186,34 +186,13 @@
     <div class="container">
         <h3>WHY XCOGNITIVE</h3>
         <hr/>
+        <?php foreach($get_services as $service){?>
         <div class="col-sm-3">
             <i class="fa fa-clock-o"></i>
-            <h4>24*7 Support</h4>
-            <p>Quae duo sunt, unum facit. Duo Reges: constructio interrete. Eadem nunc mea adversum te oratio est. Eadem
-                nunc mea adversum te oratio est. Audio equidem philosophi vocem, Epicure, sed quid tibi dicendum sit
-                oblitus es. </p>
+            <h4><?= $service->service_heading?></h4>
+            <p><?= $service->service_description?> </p>
         </div>
-        <div class="col-sm-3">
-            <i class="fa fa-clock-o"></i>
-            <h4>24*7 Support</h4>
-            <p>Quae duo sunt, unum facit. Duo Reges: constructio interrete. Eadem nunc mea adversum te oratio est. Eadem
-                nunc mea adversum te oratio est. Audio equidem philosophi vocem, Epicure, sed quid tibi dicendum sit
-                oblitus es. </p>
-        </div>
-        <div class="col-sm-3">
-            <i class="fa fa-clock-o"></i>
-            <h4>24*7 Support</h4>
-            <p>Quae duo sunt, unum facit. Duo Reges: constructio interrete. Eadem nunc mea adversum te oratio est. Eadem
-                nunc mea adversum te oratio est. Audio equidem philosophi vocem, Epicure, sed quid tibi dicendum sit
-                oblitus es. </p>
-        </div>
-        <div class="col-sm-3">
-            <i class="fa fa-clock-o"></i>
-            <h4>24*7 Support</h4>
-            <p>Quae duo sunt, unum facit. Duo Reges: constructio interrete. Eadem nunc mea adversum te oratio est. Eadem
-                nunc mea adversum te oratio est. Audio equidem philosophi vocem, Epicure, sed quid tibi dicendum sit
-                oblitus es. </p>
-        </div>
+        <?php }?>
     </div>
 </section>
 <section class="blog">

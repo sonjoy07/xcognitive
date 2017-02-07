@@ -56,7 +56,7 @@
                         </ul>
                     </li>
 
-                    <li><a href="changelog.html"><i class="icon-list-unordered"></i> <span>Changelog <span class="label bg-blue-400">1.5</span></span></a></li>
+                    <li><a href="<?=  site_url('admin/services')?>"><i class="icon-list-unordered"></i> Services</a></li>
                     <li><a href="http://demo.interface.club/limitless/layout_1/RTL/default/index.html"><i class="icon-width"></i> <span>RTL version</span></a></li>
                     <!-- /main -->
 

@@ -261,6 +261,24 @@ class Admin extends CI_Controller
         $this->load->view($this->config->item('ADMIN_THEME') . 'expert/expert_table', $data);
     }
 
+    function services(){
+        $crud = new grocery_CRUD();
+        $crud->set_table('services')
+            ->set_subject('Services')
+            ->set_field_upload('icon')
+            ->order_by('service_id', 'desc')
+            ->unset_add()
+            ->unset_delete()
+            ->unset_jquery();
+        $output = $crud->render();
+        $data['glosary'] = $output;
+//        $data['get_all_info'] = $this->common_model->get_all('blogs', 'blog_id');
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Xcognetive';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'starter', $data);
+    }
+
     function image_resize($path, $file, $width, $height)
     {
         $config_resize['image_library'] = 'gd2';

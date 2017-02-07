@@ -28,6 +28,7 @@ class Website extends CI_Controller
     function index()
     {
         $data['get_blogs'] = $this->website_model->get_published_blog();
+        $data['get_services'] = $this->website_model->get_published_services();
         $data['subjects'] = $this->website_model->get_all('subjects');
         $data['settings'] = $this->website_model->get_all_setting();
         $data['experts'] = $this->website_model->get_experts_info();
@@ -39,6 +40,8 @@ class Website extends CI_Controller
 
     function expert()
     {
+        $data['getSubjects'] = $this->website_model->get_subjects();
+        $data['getAllExpertsInfo'] = $this->website_model->get_all('expert_details');
         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
         $data['Title'] = 'Xcognitive| Experts';
         $data['base_url'] = base_url();

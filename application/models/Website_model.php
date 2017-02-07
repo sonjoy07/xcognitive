@@ -70,9 +70,18 @@ class Website_model extends CI_Model
         $sql = "select * from expert_details where publication_status = 1 order by rand() limit 5 ";
         return $this->db->query($sql)->result();
     }
+    function get_subjects()
+    {
+        $sql = "select * from subjects  order by rand() limit 5 ";
+        return $this->db->query($sql)->result();
+    }
 
     function get_info_by_id($id, $table_name, $name)
     {
         return $this->db->where($name, $id)->get($table_name)->row();
+    }
+
+    function get_published_services(){
+        return $this->db->where('publication_status',1)->get('services')->result();
     }
 }

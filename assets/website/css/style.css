@@ -649,6 +649,10 @@ footer{
 .experts_details_social{
     border-left: 1px dashed #9E9E9E;
 }
+.media img{
+    height: 110px;
+    width: 110px;
+}
 
 .expert_skill,.expert_summary,.similar_experts,.exper_shadow{
     padding: 30px;
