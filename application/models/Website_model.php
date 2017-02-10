@@ -65,11 +65,13 @@ class Website_model extends CI_Model
         $sql = "select * from expert_details where publication_status = 1 order by rand() limit 3 ";
         return $this->db->query($sql)->result();
     }
+
     function get_experts_sidebar_suggestion()
     {
         $sql = "select * from expert_details where publication_status = 1 order by rand() limit 5 ";
         return $this->db->query($sql)->result();
     }
+
     function get_subjects()
     {
         $sql = "select * from subjects  order by rand() limit 5 ";
@@ -81,7 +83,18 @@ class Website_model extends CI_Model
         return $this->db->where($name, $id)->get($table_name)->row();
     }
 
-    function get_published_services(){
-        return $this->db->where('publication_status',1)->get('services')->result();
+    function get_published_services()
+    {
+        return $this->db->where('publication_status', 1)->get('services')->result();
+    }
+
+    function get_user_type($user_id)
+    {
+        return $this->db->where('user_id', $user_id)->get('user_type')->row();
+    }
+
+    function getSubjectWiseExpert($subject)
+    {
+         return $this->db->where('skills', $subject)->get('expert_details')->result();
     }
 }

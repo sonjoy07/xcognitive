@@ -12,10 +12,11 @@ class User_login extends CI_Controller
     {
         parent::__construct();
         if ($this->session->userdata('user_id')) {
-            echo'bangladesh';
             $this->load->model('role');
             $this->role->check_access();
         }
+        $this->load->model('website_model');
+
         $this->load->helper(array('form', 'url'));
 
         $this->load->library('form_validation');
@@ -25,12 +26,18 @@ class User_login extends CI_Controller
         $this->load->library('tank_auth');
 
         $this->lang->load('tank_auth');
+       // $this->load->library('facebooksdk');
+       // $this->fb = $this->facebooksdk;
+//        $this->load->library('facebook', array('appId' => '1918679698377445', 'secret' => 'dc3a8667cb74402b4ecb3008a0d86036'));
+//        $this->user = $this->facebook->getUser();
+
     }
 
 
 //    login_part////////////////
     function index()
     {
+
 
         if ($this->tank_auth->is_logged_in()) {        // logged in
             redirect('');
@@ -81,8 +88,8 @@ class User_login extends CI_Controller
             if ($this->form_validation->run()) {        // validation ok
                 if ($this->tank_auth->login(
                     $this->form_validation->set_value('login'), $this->form_validation->set_value('password'), $this->form_validation->set_value('remember'), $data['login_by_username'], $data['login_by_email'] && $this->session->userdata('user_type') == 2)
-                ) {        // success
-                    redirect('');
+                ) {// success
+                    redirect('website');
                 } else {
 
                     $errors = $this->tank_auth->get_error_message();
@@ -120,6 +127,19 @@ class User_login extends CI_Controller
         }
     }
 
+    function facebookLogin()
+    {
+        echo $this->fb->getLoginUrl();
+        $token = $this->fb->getAccessToken();
+        $userdata = $this->fb->getUserData($token);
+        print_r($userdata);die;
+//        if ($fbuser) {
+//            $userProfile = $this->facebook->api('/me?fields=id,first_name,last_name,email,gender,locale,picture');
+//            print_r($userProfile);
+//            die;
+//        }
+    }
+
     /* Logout user
 
     *
@@ -144,28 +164,29 @@ class User_login extends CI_Controller
 
         redirect('');
     }
+
     function register()
     {
-        if ($this->tank_auth->is_logged_in()) {									// logged in
-            redirect('');
+        if ($this->tank_auth->is_logged_in()) {                                    // logged in
+            redirect('website');
 
-        } elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                        // logged in, not activated
             redirect('/auth/send_again/');
 
-        } elseif (!$this->config->item('allow_registration', 'tank_auth')) {	// registration is off
+        } elseif (!$this->config->item('allow_registration', 'tank_auth')) {    // registration is off
             $this->_show_message($this->lang->line('auth_message_registration_disabled'));
 
         } else {
             $use_username = $this->config->item('use_username', 'tank_auth');
             if ($use_username) {
-                $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|alpha_dash');
+                $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length[' . $this->config->item('username_min_length', 'tank_auth') . ']|max_length[' . $this->config->item('username_max_length', 'tank_auth') . ']|alpha_dash');
             }
             $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[' . $this->config->item('password_min_length', 'tank_auth') . ']|max_length[' . $this->config->item('password_max_length', 'tank_auth') . ']|alpha_dash');
             $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
 
-            $captcha_registration	= $this->config->item('captcha_registration', 'tank_auth');
-            $use_recaptcha			= $this->config->item('use_recaptcha', 'tank_auth');
+            $captcha_registration = $this->config->item('captcha_registration', 'tank_auth');
+            $use_recaptcha = $this->config->item('use_recaptcha', 'tank_auth');
             if ($captcha_registration) {
                 if ($use_recaptcha) {
                     $this->form_validation->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback__check_recaptcha');
@@ -177,16 +198,17 @@ class User_login extends CI_Controller
 
             $email_activation = $this->config->item('email_activation', 'tank_auth');
 
-            if ($this->form_validation->run()) {								// validation ok
+            if ($this->form_validation->run()) {                                // validation ok
                 if (!is_null($data = $this->tank_auth->create_user(
                     $use_username ? $this->form_validation->set_value('username') : '',
                     $this->form_validation->set_value('email'),
                     $this->form_validation->set_value('password'),
-                    $email_activation))) {									// success
+                    $email_activation))
+                ) {                                    // success
 
                     $data['site_name'] = $this->config->item('website_name', 'tank_auth');
 
-                    if ($email_activation) {									// send "activate" email
+                    if ($email_activation) {                                    // send "activate" email
                         $data['activation_period'] = $this->config->item('email_activation_expire', 'tank_auth') / 3600;
 
                         $this->_send_email('activate', $data['email'], $data);
@@ -196,17 +218,17 @@ class User_login extends CI_Controller
                         $this->_show_message($this->lang->line('auth_message_registration_completed_1'));
 
                     } else {
-                        if ($this->config->item('email_account_details', 'tank_auth')) {	// send "welcome" email
+                        if ($this->config->item('email_account_details', 'tank_auth')) {    // send "welcome" email
 
                             $this->_send_email('welcome', $data['email'], $data);
                         }
                         unset($data['password']); // Clear password (just for any case)
 
-                        $this->_show_message($this->lang->line('auth_message_registration_completed_2').' '.anchor('/auth/login/', 'Login'));
+                        $this->_show_message($this->lang->line('auth_message_registration_completed_2') . ' ' . anchor('/auth/login/', 'Login'));
                     }
                 } else {
                     $errors = $this->tank_auth->get_error_message();
-                    foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
+                    foreach ($errors as $k => $v) $data['errors'][$k] = $this->lang->line($v);
                 }
             }
             if ($captcha_registration) {
@@ -223,6 +245,97 @@ class User_login extends CI_Controller
 //            $this->load->view('auth/register_form', $data);
         }
     }
+
+    function save_info()
+    {
+//        if (!$this->session->userdata('user_type') or $this->session->userdata('user_type') != 1) {
+//
+//            redirect('');
+//
+//        }
+
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length[' . $this->config->item('username_min_length', 'tank_auth') . ']|max_length[' . $this->config->item('username_max_length', 'tank_auth') . ']|alpha_dash');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+
+        $user['username'] = $this->input->post('username');
+        if (!empty($this->input->post('email'))) {
+            $user['email'] = $this->input->post('email');
+        }
+        $email_activation = $this->config->item('email_activation', 'tank_auth');
+
+        if ($email_activation) {                                    // send "activate" email
+//            var_dump($_POST);die;
+//            $user['activation_period'] = $this->config->item('email_activation_expire', 'tank_auth') / 3600;
+
+//            $this->_send_email('activate', $user['email'], $user);
+
+            unset($user['password']); // Clear password (just for any case)
+
+//            $this->_show_message($this->lang->line('auth_message_registration_completed_1'));
+
+        } else {
+
+            if ($this->config->item('email_account_details', 'tank_auth')) {    // send "welcome" email
+
+//                $this->_send_email('welcome', $user['email'], $user);
+            }
+            unset($user['password']); // Clear password (just for any case)
+
+//            $this->_show_message($this->lang->line('auth_message_registration_completed_2').' '.anchor('/auth/login/', 'Login'));
+        }
+
+        $password = $this->input->post('password');
+        $hasher = new PasswordHash(
+            $this->config->item('phpass_hash_strength', 'tank_auth'), $this->config->item('phpass_hash_portable', 'tank_auth')
+        );
+
+        $user['password'] = $hasher->HashPassword($password);
+        $user['activated'] = 1;
+        $user['banned'] = 0;
+        if (!empty($_FILES['user_image']['name'])) {
+//            var_dump($_FILES);die;
+            $config['upload_path'] = './uploads/user_image/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2097152';
+
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('user_image')) {
+                $image_data = $this->upload->data();
+                $this->image_resize($image_data['full_path'], $image_data['file_name'], 64, 64);
+
+                $user['user_image'] = $image_data['file_name'];
+            } else {
+                echo $this->upload->display_errors();
+                echo "Uploading Image problem...";
+            }
+        }
+
+        $user['created'] = date('Y-m-d H:i:s');
+//        print_r($user);die;
+        $user_id = $this->website_model->save('users', $user);
+//        echo $user_id; die;
+        $data['user_id'] = $user_id;
+        $data['type'] = '2';
+        $this->website_model->save('user_type', $data);
+        redirect('website');
+    }
+
+    function image_resize($path, $file, $width, $height)
+    {
+        $config_resize['image_library'] = 'gd2';
+        $config_resize['source_image'] = $path;
+        $config_resize['create_thumb'] = FALSE;
+        $config_resize['maintain_ratio'] = TRUE;
+        $config_resize['width'] = $width;
+        $config_resize['height'] = $height;
+        $config_resize['new_image'] = './uploads/blog_image/thumb/' . $file;
+        $this->load->library('image_lib', $config_resize);
+        $this->image_lib->resize();
+    }
+
 
     /**
      * Send email message of given type (activate, forgot_password, etc.)
@@ -247,21 +360,21 @@ class User_login extends CI_Controller
     /**
      * Create CAPTCHA image to verify user as a human
      *
-     * @return	string
+     * @return    string
      */
     function _create_captcha()
     {
         $this->load->helper('captcha');
 
         $cap = create_captcha(array(
-            'img_path'		=> './'.$this->config->item('captcha_path', 'tank_auth'),
-            'img_url'		=> base_url().$this->config->item('captcha_path', 'tank_auth'),
-            'font_path'		=> './'.$this->config->item('captcha_fonts_path', 'tank_auth'),
-            'font_size'		=> $this->config->item('captcha_font_size', 'tank_auth'),
-            'img_width'		=> $this->config->item('captcha_width', 'tank_auth'),
-            'img_height'	=> $this->config->item('captcha_height', 'tank_auth'),
-            'show_grid'		=> $this->config->item('captcha_grid', 'tank_auth'),
-            'expiration'	=> $this->config->item('captcha_expire', 'tank_auth'),
+            'img_path' => './' . $this->config->item('captcha_path', 'tank_auth'),
+            'img_url' => base_url() . $this->config->item('captcha_path', 'tank_auth'),
+            'font_path' => './' . $this->config->item('captcha_fonts_path', 'tank_auth'),
+            'font_size' => $this->config->item('captcha_font_size', 'tank_auth'),
+            'img_width' => $this->config->item('captcha_width', 'tank_auth'),
+            'img_height' => $this->config->item('captcha_height', 'tank_auth'),
+            'show_grid' => $this->config->item('captcha_grid', 'tank_auth'),
+            'expiration' => $this->config->item('captcha_expire', 'tank_auth'),
         ));
 
         // Save captcha params in session

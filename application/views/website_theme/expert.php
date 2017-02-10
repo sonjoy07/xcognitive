@@ -4,14 +4,14 @@
         <h1>What Do You Want?</h1>
         <ul>
             <?php foreach($getSubjects as $subject){?>
-            <li data-id="<?=$subject->subject_id?>"><?=$subject->subject_name?></li>
+            <li class="subject" data-id="<?=$subject->subject_id?>"><?=$subject->subject_name?></li>
             <?php }?>
         </ul>
     </div>
 </section>
 <section class="experts_details">
     <div class="container">
-        <div class="rows">
+        <div class="rows" id="expert">
             <?php foreach($getAllExpertsInfo as $expert){?>
             <div class="col-sm-4 ">
                 <div class="ex-one">
@@ -216,4 +216,22 @@
     </div>
 </section>
 <?php include_once __DIR__.'/footer.php';?>
+<script>
+    $('.subject').on('click',function(){
+       var sub = $(this).data('id');
+       $.ajax({
+           type: "POST",
+           url: "<?php echo site_url('website/getSubjectWiseExpert'); ?>",
+//            dataType: 'json',
+           data: {subject: sub},
+           beforeSend: function() {
+               $("#loading-image").show();
+           },
+           success: function (res) {
+               $('#expert').html(res);
+              $("#loading-image").hide();
+           }
+       });
+    });
+</script>
 

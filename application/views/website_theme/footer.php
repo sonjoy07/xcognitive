@@ -131,7 +131,7 @@
                             <a id="google_login" class="circle google" href="/auth/google_oauth2">
                                 <i class="fa fa-google-plus fa-fw"></i>
                             </a>
-                            <a id="facebook_login" class="circle facebook" href="/auth/facebook">
+                            <a id="facebook_login" class="circle facebook" href="<?= site_url('user_login/facebookLogin');?>">
                                 <i class="fa fa-facebook fa-fw"></i>
                             </a>
                         </div>
@@ -155,18 +155,23 @@
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
-                            <form method="post" html="{:multipart=>true}" data-remote="true" action="<?=site_url('user_login/register')?>"
-                                  accept-charset="UTF-8">
+                            <?php
+                            $attributes = array(
+                                'data-remote' => 'true',
+                                'accept-charset' => 'UTF-8',
+                                'method' => 'post');
+                            echo form_open_multipart('user_login/save_info', $attributes)
+                            ?>
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
                                 <input id="email" class="form-control" type="text" placeholder="Username" name="username">
-                                <input  class="form-control" type="text" name="user_image">
+                                <input  class="form-control" type="file" name="user_image">
                                 <input id="password" class="form-control" type="password" placeholder="Password"
                                        name="password">
                                 <input id="password_confirmation" class="form-control" type="password"
                                        placeholder="Repeat Password" name="confirm_password">
                                 <input class="btn  btn-register" type="submit" value="Create account"
                                        name="commit">
-                            </form>
+                            <?= form_close(); ?>
                         </div>
                     </div>
                 </div>

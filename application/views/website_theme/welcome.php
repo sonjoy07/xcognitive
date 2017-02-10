@@ -50,18 +50,30 @@
                 <h4><a href="<?=site_url('website/expert_details/'.$expert->expert_id)?>"><?= $expert->expert_name?></a></h4>
                 <p><?=$expert->expert_designation?></p>
                 <div class="contact">
-                    <a href=""><i class="fa fa-circle"></i> CHAT</a>
-                    <a href="">MESSAGE</a>
+                   <?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
+                    ?>
+                    <a href=""><i class="fa fa-circle"></i>
+                        CHAT</a>
+                    <a href="" > MESSAGE</a>
+                    <?php }else{?>
+                        <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-circle"></i> CHAT</a>
+                        <a href="">MESSAGE</a>
+                    <?php }?>
+
                 </div>
             </div>
-            <?php }?>
 
+            <?php }?>
 
         </div>
         <h2>discovered the undoubtable</h2>
         <div class="more_contact">
-            <a href="">SEE ALL</a>
+            <a href="<?=site_url('website/expert')?>">SEE ALL</a>
+            <?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){?>
             <a href="">CHAT</a>
+            <?php }else{ ?>
+                <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">CHAT</a>
+            <?php }?>
         </div>
     </div>
 </section>

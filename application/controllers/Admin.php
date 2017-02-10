@@ -229,7 +229,7 @@ class Admin extends CI_Controller
             ->set_subject('Expert Details')
             ->field_type('language','multiselect',
                 array( "english"  => "English", "hindi" => "Hindi", "bangla" => "Bangla"))
-            ->field_type('skills','dropdown',$skills)
+            ->field_type('skills','multiselect',$skills)
             ->set_field_upload('experts_image')
             ->set_field_upload('expert', 'assets/uploads/expert')
 

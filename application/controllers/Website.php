@@ -20,9 +20,13 @@ class Website extends CI_Controller
         $this->load->library('tank_auth');
 
         $this->lang->load('tank_auth');
+//        $this->url = base_url().'user_login/facebookLogin';
+//        $this->load->library('facebooksdk');
+//        $this->fb = $this->facebooksdk;
+//        $info['url'] = $this->fb->getLoginUrl($this->url );
 //        $data['get_all_menu']=$this->common_model->get_all('main_menu');
 //        $data['all_category'] = $this->welcome_model->all_category();
-//        $data["mainContent"] = $this->load->view($this->config->item('WEBSITE_THEME') .'empty', $data);
+//        $data["mainContent"] = $this->load->view($this->config->item('WEBSITE_THEME') .'empty', $info);
     }
 
     function index()
@@ -92,6 +96,14 @@ class Website extends CI_Controller
         $data['Title'] = 'Xcognitive| Experts Deailts';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('WEBSITE_THEME') . 'expert_details', $data);
+    }
+
+    function getSubjectWiseExpert(){
+        $subject = $this->input->post('subject');
+        $data['getSubjectWiseExpert'] = $this->website_model->getSubjectWiseExpert($subject);
+//        print_r($data);die;
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'search_expert', $data);
+
     }
 
 }

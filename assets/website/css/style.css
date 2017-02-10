@@ -819,3 +819,153 @@ footer{
 .nbs-flexisel-nav-right.disabled {
     opacity: 0.4;
 }
+input[type="file"] {
+    background: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+
+
+
+/*media query */
+@media (max-width: 1300px) {
+    .text-content {
+        top: 40%;
+    }
+    .text-content h3{
+        font-size: 16px;
+    }
+    .intro_head{
+        margin-top: 70px;
+    }
+    .intro_button a {
+        padding: 8px 70px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 1100px) {
+    .text-content {
+        top: 30%;
+        font-size: 14px;
+    }
+    .text-content h3{
+        font-size: 14px;
+    }
+    .intro_head{
+        margin-top: 50px;
+    }
+    .intro_button{
+        margin-top: 20px
+    }
+    .intro_button a {
+        padding: 5px 50px;
+        font-size: 10px;
+    }
+    .consoling{
+        display: none!important;
+    }
+}
+
+@media (max-width: 700px) {
+    h3{
+        font-size: 16px;
+    }
+    .text-content {
+        top: 20%;
+        font-size: 14px;
+    }
+    .text-content h3{
+        font-size: 13px;
+    }
+    .intro_head{
+        margin-top: 20px;
+    }
+    .intro_button a {
+        padding: 5px 30px;
+        font-size: 10px;
+    }
+    .more_details .col-sm-4 {
+        margin-top: 30px;
+    }
+    .more_contact a{
+        padding: 6px 30px;
+    }
+    h2{
+        font-size: 18px;
+    }
+    .contact a {
+        padding: 6px;
+        font-size: 10px;
+    }
+    iframe{
+        height: 300px;
+        margin-top: 40px!important;
+    }
+    .option .guest_section,.option .admin_section, .option .savior_section{
+        width: 100%;
+        float: none;
+    }
+    .useful_information button, .contact_link {
+        padding: 8px 88px;
+    }
+    .navbar {
+        min-height: 56px;
+    }
+    .navbar-brand > img {
+        height: 50px;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+    .text-content {
+        top: 15%;
+        font-size: 12px;
+    }
+    .text-content h3,h2{
+        font-size: 8px;
+    }
+    .intro_head{
+        margin-top: 10px;
+    }
+    .intro_button a {
+        padding: 5px 15px;
+        font-size: 8px;
+    }
+}
+@media (max-width: 400px) {
+    .text-content {
+        top: 13%;
+        font-size: 8px;
+    }
+    .text-content h3{
+        font-size: 6px;
+    }
+    .intro_head{
+        margin-top: 6px;
+    }
+    .intro_button a {
+        padding: 5px 12px;
+        font-size: 6px;
+    }
+    h3{
+        font-size: 14px;
+    }
+    .more_details img{
+        height: 80px;
+        width: 80px;
+    }
+    .useful_information button, .contact_link {
+        padding: 8px 100px;
+    }
+    .option .guest_section a, .option .admin_section a, .option .savior_section a {
+        padding: 10px 50px;
+        font-size: 14px;
+    }
+    .option p {
+        font-size: 15px;
+    }
+
+}

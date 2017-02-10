@@ -20,7 +20,10 @@
         <script src="<?=$theme_asset_url?>js/vendor/modernizr-2.8.3.min.js"></script>
         <!--<script src="<?=$theme_asset_url?>js/vendor/jquery.min.js"></script>-->
     </head>
-    <body>
+    <body onload="loadingAjax('myDiv');">
+    <div id="myDiv" style="position: fixed;top: 50%;left: 40%;">
+        <img id="loading-image" src="<?=$theme_asset_url?>images/ajax-loader.png" style="display: none;"/>
+    </div>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -54,7 +57,7 @@
                                 <?php
                                 if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
                                 ?>
-                                    <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> Sonjoy <i class="caret"></i></a>
+                                    <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> <?=$this->session->userdata('username')?> <i class="caret"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li><a href="">Profile</a></li>
                                             <li><a href="<?=site_url('user_login/logout')?>">Logout</a></li>
