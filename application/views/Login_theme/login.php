@@ -40,7 +40,7 @@ $captcha = array(
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+	<title><?=$title?></title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -68,37 +68,37 @@ $captcha = array(
 <body class="login-container">
 
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse">
+<!--	<div class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><img src="<?=$theme_asset_url?>assets/images/logo_light.png" alt=""></a>
-
+			<a class="navbar-brand" href="index.html"><img src="<?=$theme_asset_url?>assets/images/logooo.png" alt=""></a>
+    <h2>Xcognetive</h2>
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
 			</ul>
-		</div>
+		</div>-->
 
-		<div class="navbar-collapse collapse" id="navbar-mobile">
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#">
-						<i class="icon-display4"></i> <span class="visible-xs-inline-block position-right"> Go to website</span>
-					</a>
-				</li>
-
-				<li>
-					<a href="#">
-						<i class="icon-user-tie"></i> <span class="visible-xs-inline-block position-right"> Contact admin</span>
-					</a>
-				</li>
-
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-cog3"></i>
-						<span class="visible-xs-inline-block position-right"> Options</span>
-					</a>
-				</li>
-			</ul>
-		</div>
+<!--		<div class="navbar-collapse collapse" id="navbar-mobile">-->
+<!--			<ul class="nav navbar-nav navbar-right">-->
+<!--				<li>-->
+<!--					<a href="#">-->
+<!--						<i class="icon-display4"></i> <span class="visible-xs-inline-block position-right"> Go to website</span>-->
+<!--					</a>-->
+<!--				</li>-->
+<!---->
+<!--				<li>-->
+<!--					<a href="#">-->
+<!--						<i class="icon-user-tie"></i> <span class="visible-xs-inline-block position-right"> Contact admin</span>-->
+<!--					</a>-->
+<!--				</li>-->
+<!---->
+<!--				<li class="dropdown">-->
+<!--					<a class="dropdown-toggle" data-toggle="dropdown">-->
+<!--						<i class="icon-cog3"></i>-->
+<!--						<span class="visible-xs-inline-block position-right"> Options</span>-->
+<!--					</a>-->
+<!--				</li>-->
+<!--			</ul>-->
+<!--		</div>-->
 	</div>
 	<!-- /main navbar -->
 
@@ -120,7 +120,11 @@ $captcha = array(
                     <?php echo form_open($this->uri->uri_string()); ?>
 						<div class="panel panel-body login-form">
 							<div class="text-center">
-								<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                                                            <div class="icon-object border-slate-300 text-slate-300" style="height: 140px;width:140px;"></i>
+                                                            <img src="<?=$theme_asset_url?>assets/images/logooo.png" alt="" style="width: 100%;">
+                                                            </div>
+                                                                
+                                                                
 								<h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
 							</div>
 
@@ -156,7 +160,7 @@ $captcha = array(
 
 					<!-- Footer -->
 					<div class="footer text-muted text-center">
-						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						&copy; <?= date("Y") ?> <?= anchor($SITE['website'], $SITE['name'], 'target="_blank"') ?> by <?= anchor($DEVELOPER['website'], $DEVELOPER['name'], 'target="_blank"') ?>
 					</div>
 					<!-- /footer -->
 

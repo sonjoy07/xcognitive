@@ -4,20 +4,20 @@
     <div class="text-content">
         <h1><?= $settings->welcome_message ?></h1>
         <hr/>
-        <h3 class="intro_head"><?= $settings->introduction ?></h3>
+        <h3 class="intro_head"><?= $settings->introduction ?><?php echo $this->session->userdata('user_type')?></h3>
         <div class="intro_button">
             <?php
-            if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
+            if ($this->session->userdata('user_type')==2){
             ?>
             <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>
                 Chat</a>
             <a href="" ><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                Appoinment</a>
+                Appointment</a>
             <?php }else{?>
                 <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-comment-o" aria-hidden="true"></i>
                     Chat</a>
                 <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                    Appoinment</a>
+                    Appointment</a>
             <?php }?>
         </div>
         <!--        <a href="">Universa enim illorum ratione cum tota vestra confligendum puto.</a>-->
@@ -164,21 +164,32 @@
     </div>
 </section>
 <br/>
-<section class="blog">
+<section class="maincontent-area blog">
+    <div class="zigzag-bottom"></div>
     <div class="container">
-        <h3>discovered the undoubtable</h3>
-        <hr/>
-        <ul class="flexiselDemo3">
-            <li><img src="images/1.jpg" />
-                <p>sdfsdf</p>
-            </li>
-            <li><img src="images/2.jpg" /></li>
-            <li><img src="images/3.jpg" /></li>
-            <li><img src="images/4.jpg" /></li>
-        </ul>
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <<h3>Latest Books</h3>
+                    <hr/>
+                    <div class="product-carousel-download">
+                        <?php foreach ($bookDownloads as $book){?>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="<?=base_url()?>assets/uploads/files/<?=$book->book_front_image?>" alt="">
+                                    <div class="product-hover">
+                                        <input type="hidden" value="<?=$book->book_id?>" id="book_id">
+                                        <a href="<?= base_url()?>assets/uploads/files/<?=$book->book_download_file?>" target="blank" id="download" class="add-to-cart-link"><i class="fa fa-download"></i> Download</a>                                    </div>
+                                </div>
+                                <h4><?=$book->book_title?></h4>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+</section> <!-- End main content area -->
 <section class="about">
     <div class="container">
         <div class="row">
@@ -207,19 +218,30 @@
         <?php }?>
     </div>
 </section>
-<section class="blog">
+
+<section class="maincontent-area blog">
+    <div class="zigzag-bottom"></div>
     <div class="container">
-        <h3>Latest Article</h3>
-        <hr/>
-        <ul class="flexiselDemo3">
-            <?php foreach ($get_blogs as $blog){?>
-            <li><img src="<?=base_url()?>uploads/blog_image/<?=$blog->blog_image?>" />
-                <h5><a href="<?=site_url('website/blog_details/')?><?=$blog->blog_id?>"><?=$blog->blog_title?></a></h5>
-            </li>
-            <?php }?>
-        </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <<h3>Latest Article</h3>
+                    <hr/>
+                    <div class="product-carousel">
+                        <?php foreach ($get_blogs as $blog){?>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="<?=base_url()?>uploads/blog_image/<?=$blog->blog_image?>" alt="">
+                                <h2><a href="<?=site_url('website/blog_details/')?><?=$blog->blog_id?>"><?=$blog->blog_title?></a></h2>
+                            </div>
+                        </div>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+</section> <!-- End main content area -->
 <section class="option text-center">
     <div class="guest_section">
         <a href="">Guest Blog</a>

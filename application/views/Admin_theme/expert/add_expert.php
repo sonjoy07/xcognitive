@@ -54,30 +54,12 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Skill List</label>
                                 <div class="col-lg-10">
-                                    <select name="category_id" id="" class="form-control">
+                                    <select class="multiselect-select-all-filtering form-control" multiple="multiple"  name="skills[]">
                                         <option value="">Select Skill</option>
                                         <?php foreach($get_subjects as $sub){?>
                                             <option value="<?=$sub->subject_id?>"><?=$sub->subject_name?></option>
                                         <?php }?>
                                     </select>
-                                    <select class="multiselect-select-all-filtering" multiple="multiple" style="display: none;">
-                                        <option value="">Select Skill</option>
-                                        <?php foreach($get_subjects as $sub){?>
-                                            <option value="<?=$sub->subject_id?>"><?=$sub->subject_name?></option>
-                                        <?php }?>
-                                    </select>
-                                    <div class="btn-group">
-                                        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected" aria-expanded="false">
-                                            <span class="multiselect-selected-text">None selected</span>
-                                            <b class="caret"></b></button>
-                                        <ul class="multiselect-container dropdown-menu">
-                                            <li class="multiselect-item multiselect-filter" value="0"><i class="icon-search4"></i> <input class="form-control uniform-input text" placeholder="Search" type="text"></li>
-                                            <li class="multiselect-item multiselect-all"><a tabindex="0" class="multiselect-all"><label class="checkbox"><div class="checker"><span class=""><input value="multiselect-all" type="checkbox"></span></div>  Select all</label></a></li>
-                                            <li class=""><a tabindex="0"><label class="checkbox"><div class="checker"><span class=""><input value="cheese" type="checkbox"></span></div> Cheese</label></a></li>
-                                            <li class=""><a tabindex="0"><label class="checkbox"><div class="checker"><span class=""><input value="tomatoes" type="checkbox"></span></div> Tomatoes</label></a></li>
-                                            <li class=""><a tabindex="0"><label class="checkbox"><div class="checker"><span class=""><input value="mozarella" type="checkbox"></span></div> Mozzarella</label></a></li>
-                                            <li class=""><a tabindex="0"><label class="checkbox"><div class="checker"><span class=""><input value="mushrooms" type="checkbox"></span></div> Mushrooms</label></a></li>
-                                        </ul></div>
 
                                 </div>
                             </div>
@@ -92,15 +74,20 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Expert Image</label>
                                 <div class="col-lg-10">
-                                    <div class="uploader"><input class="file-styled" type="file" name="expert_image"><span class="filename" style="-moz-user-select: none;">No file selected</span><span class="action btn btn-default" style="-moz-user-select: none;">Choose File</span></div>
+                                    <div class="uploader"><input class="file-styled" type="file" name="experts_image"><span class="filename" style="-moz-user-select: none;">No file selected</span><span class="action btn btn-default" style="-moz-user-select: none;">Choose File</span></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-2">Language</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="language" placeholder="Language...">
-                                </div>
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label class="control-label col-lg-2">Language</label>-->
+<!--                                <div class="col-lg-10">-->
+<!--                                    <select class="multiselect-select-all-filtering form-control"  multiple="multiple"  name="language[]">-->
+<!--                                        <option value="">Select Language</option>-->
+<!--                                        <option value="english">English</option>-->
+<!--                                        <option value="hindi">Hindi</option>-->
+<!--                                        <option value="bangla">Bangla</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Facebook</label>
                                 <div class="col-lg-10">
@@ -152,6 +139,81 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Practise Time:</label>
+                                <div class="col-sm-9">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox1" class="day" name="sun" value="sun">
+                                            Sun
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="sun_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox2" class="day" name="mon" value="mon">
+                                            Mon
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="mon_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox3" class="day" name="tue" value="tue">
+                                            Tue
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="tue_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox1" class="day" name="wed" value="wed">
+                                            Wed
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="wed_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox2" class="day" name="thu" value="thu">
+                                            Thu
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="thu_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox3" class="day" name="fri" value="fri">
+                                            Fri
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="fri_time">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <input type="checkbox" id="inlineCheckbox3" class="day" name="sat" value="sat">
+                                            Sat
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="inputEmail3" id="time" placeholder="eg:10:00AM - 12:00PM"
+                                                   name="sat_time">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-lg-2">Publication Status</label>
                                 <div class="col-lg-10">
                                     <select name="publication_status" id="" class="form-control">
@@ -173,3 +235,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.multiselect-select-all-filtering').multiselect();
+    });
+</script>

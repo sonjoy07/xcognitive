@@ -128,10 +128,10 @@
                             <a class="circle github" href="/auth/github">
                                 <i class="fa fa-github fa-fw"></i>
                             </a>
-                            <a id="google_login" class="circle google" href="/auth/google_oauth2">
+                            <a id="google_login" class="circle google" href="<?= $authUrl ?>">
                                 <i class="fa fa-google-plus fa-fw"></i>
                             </a>
-                            <a id="facebook_login" class="circle facebook" href="<?= site_url('user_login/facebookLogin');?>">
+                            <a id="facebook_login" class="circle facebook" href="<?= $facebookUrl; ?>">
                                 <i class="fa fa-facebook fa-fw"></i>
                             </a>
                         </div>
@@ -142,12 +142,12 @@
                         </div>
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form method="post" action="<?=site_url('user_login')?>" accept-charset="UTF-8">
+                            <form method="post" action="<?= site_url('user_login') ?>" accept-charset="UTF-8">
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="login">
                                 <input id="password" class="form-control" type="password" placeholder="Password"
                                        name="password">
                                 <input class="btn  btn-login" type="submit" value="Login"
-                                      >
+                                >
                             </form>
                         </div>
                     </div>
@@ -162,15 +162,15 @@
                                 'method' => 'post');
                             echo form_open_multipart('user_login/save_info', $attributes)
                             ?>
-                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                <input id="email" class="form-control" type="text" placeholder="Username" name="username">
-                                <input  class="form-control" type="file" name="user_image">
-                                <input id="password" class="form-control" type="password" placeholder="Password"
-                                       name="password">
-                                <input id="password_confirmation" class="form-control" type="password"
-                                       placeholder="Repeat Password" name="confirm_password">
-                                <input class="btn  btn-register" type="submit" value="Create account"
-                                       name="commit">
+                            <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                            <input id="email" class="form-control" type="text" placeholder="Username" name="username">
+                            <input class="form-control" type="file" name="user_image">
+                            <input id="password" class="form-control" type="password" placeholder="Password"
+                                   name="password">
+                            <input id="password_confirmation" class="form-control" type="password"
+                                   placeholder="Repeat Password" name="confirm_password">
+                            <input class="btn  btn-register" type="submit" value="Create account"
+                                   name="commit">
                             <?= form_close(); ?>
                         </div>
                     </div>
@@ -191,13 +191,55 @@
     </div>
 </div>
 <!--////////////////////-->
+<!--feedback option-->
+<div class="feedback_form">
+    <a href="" type="button" data-toggle="modal" data-target="#myModal">Feedback Form</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">Share your Feedback</h3>
+                <p class="modal-title">We would love to hear your thoughts, concerns or problems with anything so we can
+                    improve!</p>
+            </div>
+            <div class="modal-body">
+                <div class="margin feedback">
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control"
+                                   value="<?= $this->session->userdata('username'); ?>" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="" cols="30" rows="10" class="form-control">
+                            </textarea>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-warning btn-lg btn-block ">Share Feedback
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/////////////////////-->
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="<?=$theme_asset_url?>js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="<?= $theme_asset_url ?>js/plugins.js"></script>
 <script src="<?= $theme_asset_url ?>js/main.js"></script>
 <script src="<?= $theme_asset_url ?>js/bootstrap.min.js"></script>
+<script src="<?= $theme_asset_url ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= $theme_asset_url ?>js/login-register.js"></script>
 <script type="text/javascript" src="<?= $theme_asset_url ?>js/jquery.flexisel.js"></script>
+<!-- jQuery sticky menu -->
+<script src="<?= $theme_asset_url ?>js/owl.carousel.min.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
@@ -219,6 +261,40 @@
 <script type="text/javascript">
     $('#myCarousel').carousel({
         interval: 4000
+    });
+    $('.product-carousel').owlCarousel({
+        loop:true,
+        nav:true,
+        margin:20,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:3,
+            },
+            1000:{
+                items:3,
+            }
+        }
+    });
+    $('.product-carousel-download').owlCarousel({
+        loop:true,
+        nav:true,
+        margin:20,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:3,
+            },
+            1000:{
+                items:5,
+            }
+        }
     });
     //jQuery is required to run this code
     $(document).ready(function () {
@@ -264,7 +340,7 @@
             videoWidth,
             videoHeight;
 
-        console.log(windowHeight);
+//        console.log(windowHeight);
 
         $(element).each(function () {
             var videoAspectRatio = $(this).data('height') / $(this).data('width');
@@ -292,6 +368,49 @@
             interval: 5000,
             pauseOnHover: true
         }
+    });
+    //    archives
+    $('.archive li').click(function (e) {
+        e.preventDefault();
+        $('.monthlist').toggle();
+    });
+    $('.archive li ul li ').click(function (e) {
+        e.preventDefault();
+        $('.archive li ul li ul').toggle();
+    });
+    $('#search').click(function (e) {
+//        e.preventDefault();
+//        if (e.which == 13) {
+            var search = $('#search_item').val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('website/getSearchDetails'); ?>",
+//            dataType: 'json',
+                data: {search: search},
+                beforeSend: function () {
+                    $("#loading-image").show();
+                },
+                success: function (res) {
+                    $('#blog_search').html(res);
+                    $("#loading-image").hide();
+                }
+            });
+//        }
+    });
+//    feedback
+    $(function () {
+        $('form#feedbackForm').submit(function (e) {
+            var form = $(this).serialize();
+            e.preventDefault();
+            $.ajax({
+                url: '<?php echo site_url('website/save_feedback'); ?>',
+                data: form,
+                type: 'post',
+                success: function (res) {
+                    $('#myModal').modal('hide');
+                }
+            })
+        });
     });
 </script>
 </body>

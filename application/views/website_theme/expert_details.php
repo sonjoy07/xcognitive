@@ -10,12 +10,23 @@
                     <h1><?=$get_expert_info->expert_name?></h1>
                     <p><?=$get_expert_info->expert_designation?></p>
                     <p><?=$get_expert_info->expert_about?></p>
+                     <?php
+            if ($this->session->userdata('user_type')==2){
+            ?>
                     <div class="details_button ">
                         <a href=""><i class="fa fa-envelope" aria-hidden="true"></i>
                             Message</a>
-                        <a href=""><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            Appoinment</a>
+                        <a href="<?=site_url('user_controller/appoinment')?>"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                            Appointment</a>
                     </div>
+                     <?php }else{?>
+                    <div class="details_button ">
+                        <a href=""  type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-envelope" aria-hidden="true"></i>
+                            Message</a>
+                        <a href=""  type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                            Appointment</a>
+                    </div>
+                    <?php }?>
                 </div>
             </div>
             <div class="col-sm-4 expert_scoal_details">
@@ -105,7 +116,7 @@
                         </div>
                         <div class="col-sm-9">
                             <h4>Tom Henry</h4>
-                            <span>Dentist</span><br>
+                            <span><strong>Dentist</strong></span><br>
                             <span><strong>Conversation: </strong>545</span>
                         </div>
                     </div>
@@ -113,7 +124,7 @@
                     <div class="similar_list_button">
                         <a href=""><i class="fa fa-envelope" aria-hidden="true"></i>
                             Message</a>
-                        <a href=""><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                        <a href="<?=site_url('website/appoinment')?>"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                             Appoinment</a>
                     </div>
                 </div><div class="similar_experts_list">

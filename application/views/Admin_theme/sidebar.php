@@ -6,11 +6,11 @@
         <div class="sidebar-user">
             <div class="category-content">
                 <div class="media">
-                    <a href="#" class="media-left"><img src="assets/images/demo/users/face11.jpg" class="img-circle img-sm" alt=""></a>
+                    <a href="#" class="media-left"><img src="<?=base_url()?>assets/website/images/logooo.png" class="img-circle img-sm" alt=""></a>
                     <div class="media-body">
-                        <span class="media-heading text-semibold">Victoria Baker</span>
+                        <span class="media-heading text-semibold">Xcognitive</span>
                         <div class="text-size-mini text-muted">
-                            <i class="icon-pin text-size-small"></i> &nbsp;Santa Ana, CA
+                            <!--<i class="icon-pin text-size-small"></i> &nbsp;Santa Ana, CA-->
                         </div>
                     </div>
 
@@ -46,18 +46,20 @@
                         <ul>
                             <li><a href="<?=  site_url('admin/add_subject')?>">Add Subject</a></li>
                             <li><a href="<?=  site_url('admin/expert_list')?>">Expert List</a></li>
+                            <li><a href="<?=  site_url('admin/expert_schedule')?>">Expert schedule</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href=""><i class="icon-stack2"></i> <span>Homepage</span></a>
                         <ul>
 
-                            <li><a href="<?=  site_url('admin/settings')?>">Settings</a></li>
+                            <li><a href="<?=  site_url('admin/settings')?>"><i class="icon-cog3"></i> Settings</a></li>
                         </ul>
                     </li>
 
-                    <li><a href="<?=  site_url('admin/services')?>"><i class="icon-list-unordered"></i> Services</a></li>
-                    <li><a href="http://demo.interface.club/limitless/layout_1/RTL/default/index.html"><i class="icon-width"></i> <span>RTL version</span></a></li>
+                    <li><a href="<?=  site_url('admin/services')?>"><i class="icon-windows"></i> Services</a></li>
+                    <li><a href="<?=  site_url('admin/book_download')?>"><i class="icon-download"></i> Book Download</a></li>
+                    <!--<li><a href="http://demo.interface.club/limitless/layout_1/RTL/default/index.html"><i class="icon-width"></i> <span>RTL version</span></a></li>-->
                     <!-- /main -->
 
                     <!-- Forms -->

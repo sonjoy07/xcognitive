@@ -1,12 +1,14 @@
 <?php include_once __DIR__ . '/header.php'; ?>
-<section class="blog_home">
+<section class="blog_home" >
     <div class="container">
         <!-- Blog Post Content Column -->
-        <div class="col-lg-9">
+        <div class="col-lg-9" id="blog_search">
 
             <!-- Blog Post -->
-
+<!--            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=--><?php //echo site_url('website/blog_details/'.$blog_details->blog_id);?><!--">Share</a></div>-->
+<!--            <div class="fb-share-button" data-href="http://localhost/xcognitive/index.php/website/blog_details/--><?//=$blog_details->blog_id?><!--" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2Fxcognitive%2Findex.php%2Fwebsite%2Fblog_details%2F9&amp;src=sdkpreparse">Share</a></div>-->
             <!-- Title -->
+            <div class="fb-share-button" data-href="http://friendsitltd.com/xcognitive/index.php/website/blog_details/<?=$blog_details->blog_id?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffriendsitltd.com%2Fxcognitive%2Findex.php%2Fwebsite%2Fblog_details%2F9&amp;src=sdkpreparse">Share</a></div>
             <h1><?= $blog_details->blog_title ?></h1>
 
             <!-- Author -->

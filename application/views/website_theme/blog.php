@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . '/header.php'; ?>
 <section class="blog_home">
     <div class="container">
-        <div class="col-sm-9">
+        <div class="col-sm-9" id="blog_search">
             <!-- Blog Post -->
 
             <!-- Title -->
@@ -40,7 +40,7 @@
                                 <!--<h4 class="pull-right">$24.99</h4>-->
                                 <h4><a href="<?= site_url('website/blog_details/' . $blog->blog_id) ?>"><?= $blog->blog_title ?></a>
                                 </h4>
-                                <?= $blog->short_description ?>
+                                <?php echo  substr($blog->short_description,0,100).'<a href="'.site_url('website/blog_details/' . $blog->blog_id).' "> Read More...</a>'; ?>
                             </div>
                             <!--                        <div class="ratings">
                                                         <p class="pull-right">15 reviews</p>

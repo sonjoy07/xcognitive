@@ -17,6 +17,8 @@ class User_login extends CI_Controller
         }
         $this->load->model('website_model');
 
+        $this->load->model('common_model');
+
         $this->load->helper(array('form', 'url'));
 
         $this->load->library('form_validation');
@@ -26,8 +28,8 @@ class User_login extends CI_Controller
         $this->load->library('tank_auth');
 
         $this->lang->load('tank_auth');
-       // $this->load->library('facebooksdk');
-       // $this->fb = $this->facebooksdk;
+        // $this->load->library('facebooksdk');
+        // $this->fb = $this->facebooksdk;
 //        $this->load->library('facebook', array('appId' => '1918679698377445', 'secret' => 'dc3a8667cb74402b4ecb3008a0d86036'));
 //        $this->user = $this->facebook->getUser();
 
@@ -132,7 +134,8 @@ class User_login extends CI_Controller
         echo $this->fb->getLoginUrl();
         $token = $this->fb->getAccessToken();
         $userdata = $this->fb->getUserData($token);
-        print_r($userdata);die;
+        print_r($userdata);
+        die;
 //        if ($fbuser) {
 //            $userProfile = $this->facebook->api('/me?fields=id,first_name,last_name,email,gender,locale,picture');
 //            print_r($userProfile);
@@ -323,17 +326,33 @@ class User_login extends CI_Controller
         redirect('website');
     }
 
-    function image_resize($path, $file, $width, $height)
+    /**
+     * Change user password
+     *
+     * @return void
+     */
+    function change_password()
     {
-        $config_resize['image_library'] = 'gd2';
-        $config_resize['source_image'] = $path;
-        $config_resize['create_thumb'] = FALSE;
-        $config_resize['maintain_ratio'] = TRUE;
-        $config_resize['width'] = $width;
-        $config_resize['height'] = $height;
-        $config_resize['new_image'] = './uploads/blog_image/thumb/' . $file;
-        $this->load->library('image_lib', $config_resize);
-        $this->image_lib->resize();
+
+            $this->form_validation->set_rules('old_password', 'Old Password', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('new_password', 'New Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
+            $this->form_validation->set_rules('confirm_new_password', 'Confirm new Password', 'trim|required|xss_clean|matches[new_password]');
+
+            $data['errors'] = array();
+
+            if ($this->form_validation->run()) {								// validation ok
+                if ($this->tank_auth->change_password(
+                    $this->form_validation->set_value('old_password'),
+                    $this->form_validation->set_value('new_password'))) {	// success
+                    $this->_show_message($this->lang->line('auth_message_password_changed'));
+
+                } else {														// fail
+                    $errors = $this->tank_auth->get_error_message();
+                    foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
+                }
+            }
+            redirect('website/resetPasswords');
+
     }
 
 
@@ -386,4 +405,64 @@ class User_login extends CI_Controller
         return $cap['image'];
     }
 
+    function edit_user_info()
+    {
+        $post = $this->input->post();
+        $id = $this->session->userdata('user_id');
+        $data['username'] = $post['username'];
+        $data['email'] = $post['email'];
+        if (!empty($_FILES['user_image']['name'])) {
+//            var_dump($_FILES);die;
+            $config['upload_path'] = './uploads/user_image/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2097152';
+
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('user_image')) {
+                $image_data = $this->upload->data();
+                $this->image_resize($image_data['full_path'], $image_data['file_name'], 900, 300);
+
+                $data['user_image'] = $image_data['file_name'];
+            } else {
+                echo $this->upload->display_errors();
+                echo "Uploading Image problem...";
+                die;
+            }
+        }
+        $this->common_model->update('users', $data, $id, 'id');
+        redirect('website/userProfile');
+    }
+
+    function update_user_profile()
+    {
+        $post = $this->input->post();
+
+        $user_info_id = $post['user_info_id'];
+        $data['user_id'] = $this->session->userdata('user_id');
+        $data['dob'] = $post['dob'];
+        $data['gender'] = $post['gender'];
+        $data['occupation'] = $post['occupation'];
+//        var_dump($post);die;
+        if (!empty($user_info_id)) {
+            $this->common_model->update('user_info', $data, $user_info_id,'user_info_id');
+        } else {
+            $this->common_model->insert('user_info', $data);
+        }
+        redirect('website/userProfile');
+    }
+
+    function image_resize($path, $file, $width, $height)
+    {
+        $config_resize['image_library'] = 'gd2';
+        $config_resize['source_image'] = $path;
+        $config_resize['create_thumb'] = FALSE;
+        $config_resize['maintain_ratio'] = TRUE;
+        $config_resize['width'] = $width;
+        $config_resize['height'] = $height;
+        $config_resize['new_image'] = './uploads/blog_image/thumb/' . $file;
+        $this->load->library('image_lib', $config_resize);
+        $this->image_lib->resize();
+    }
 }
