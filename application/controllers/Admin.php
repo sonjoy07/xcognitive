@@ -22,10 +22,10 @@ class Admin extends CI_Controller
         $this->load->library('tank_auth');
         $this->load->model('role');
         $this->role->check_access();
-        if (!$this->tank_auth->is_logged_in()|| $this->session->userdata('user_id')==2) {         //not logged in
-            redirect('login');
-            return 0;
-        }
+//        if (!$this->tank_auth->is_logged_in()|| $this->session->userdata('user_id')==2) {         //not logged in
+//            redirect('login');
+//            return 0;
+//        }
         $this->load->model('checkuser');
         $this->load->library('grocery_CRUD');
         $this->load->library('ckeditor');
@@ -72,6 +72,7 @@ class Admin extends CI_Controller
             ->set_subject('Subject')
             ->set_field_upload('subject_icon')
             ->set_field_upload('icon', 'assets/uploads/files')
+            ->callback_after_upload(array($this,'example_callback_after_upload'))
             ->order_by('subject_id', 'desc')
             ->unset_jquery();
 //        $crud->unique_fields('name');

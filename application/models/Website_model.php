@@ -16,21 +16,31 @@ class Website_model extends CI_Model
     //put your code here
     function get_last_blog()
     {
-        return $this->db->limit(1)->order_by('blog_id', 'desc')->get('blogs')->row();
+        return $this->db->limit(1)->where('publication_status',1)->order_by('blog_id', 'desc')->get('blogs')->row();
+    }
+    
+    function get_last_blog_by_user($id)
+    {
+        return $this->db->limit(1)->where('user_id',$id)->where('publication_status',1)->order_by('blog_id', 'desc')->get('blogs')->row();
     }
 
     function get_some_blog()
     {
-        return $this->db->limit(10)->order_by('blog_id', 'desc')->get('blogs')->result();
+        return $this->db->limit(10)->where('publication_status',1)->order_by('blog_id', 'desc')->get('blogs')->result();
+    }
+   
+    function get_some_blog_by_user($id)
+    {
+        return $this->db->limit(10)->where('user_id',$id)->where('publication_status',1)->order_by('blog_id', 'desc')->get('blogs')->result();
     }
 
     function get_some_blog_by_category_id($id){
-        return $this->db->limit(10)->where('category_id',$id)->order_by('blog_id', 'desc')->get('blogs')->result();
+        return $this->db->limit(10)->where('publication_status',1)->where('category_id',$id)->order_by('blog_id', 'desc')->get('blogs')->result();
     }
 
     function getArchivesValue()
     {
-        $years = $this->db->select('*,Year(published_date) as year,Month(published_date) as month,COUNT(*) AS TOTAL')->group_by('year,month')->order_by('blog_id','desc')->get('blogs')->result();
+        $years = $this->db->select('*,Year(published_date) as year,Month(published_date) as month,COUNT(*) AS TOTAL')->group_by('year,month')->where('publication_status',1)->order_by('blog_id','desc')->get('blogs')->result();
         $i = 0;
         foreach ($years as $year){
             $y = $year->year;
@@ -43,12 +53,12 @@ class Website_model extends CI_Model
 
     function latest_post()
     {
-        return $this->db->limit(5)->order_by('blog_id', 'desc')->get('blogs')->result();
+        return $this->db->limit(5)->where('publication_status',1)->order_by('blog_id', 'desc')->get('blogs')->result();
     }
 
     function latest_category()
     {
-        return $this->db->limit(5)->order_by('category_id', 'desc')->get('blog_category')->result();
+        return $this->db->limit(5)->where('publication_status',1)->order_by('category_id', 'desc')->get('blog_category')->result();
     }
 
     function get_all($table)

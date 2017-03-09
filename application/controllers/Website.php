@@ -21,6 +21,17 @@ class Website extends CI_Controller {
         $this->facebook_login();
         
         $this->google_login();
+        
+         $this->load->library('ckeditor');
+
+        $this->load->library('ckfinder');
+
+        $this->ckeditor->basePath = base_url() . 'assets/ckeditor/';
+        $this->ckeditor->config['width'] = '100%';
+        $this->ckeditor->config['height'] = '300px';
+
+//Add Ckfinder to Ckeditor
+        $this->ckfinder->SetupCKEditor($this->ckeditor, '../../assets/ckfinder/');
     }
 
     function index() {
@@ -46,8 +57,21 @@ class Website extends CI_Controller {
     }
 
     function blog() {
+        $data['blog'] = 'blog';
         $data['get_last_blog'] = $this->website_model->get_last_blog();
         $data['get_some_blog'] = $this->website_model->get_some_blog();
+        $data['latest_post'] = $this->website_model->latest_post();
+        $data['archives'] = $this->website_model->getArchivesValue();
+        $data['latest_category'] = $this->website_model->latest_category();
+        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Experts';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'blog', $data);
+    }
+    function blogs_by_user($id) {
+        $data['blog'] = 'blog';
+        $data['get_last_blog'] = $this->website_model->get_last_blog_by_user($id);
+        $data['get_some_blog'] = $this->website_model->get_some_blog_by_user($id);
         $data['latest_post'] = $this->website_model->latest_post();
         $data['archives'] = $this->website_model->getArchivesValue();
         $data['latest_category'] = $this->website_model->latest_category();
@@ -211,25 +235,127 @@ class Website extends CI_Controller {
         $data["mainContent"] = $this->load->view($this->config->item('WEBSITE_THEME') . 'empty', $data);
     }
 
-    function self_test() {
+    function expert_registration() {
+        $data['get_subjects'] = $this->common_model->get_all('subjects', 'subject_id');
         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
-        $data['Title'] = 'Xcognitive| Self Test';
+        $data['Title'] = 'Xcognitive| Experts Deailts';
         $data['base_url'] = base_url();
-        $this->load->view($this->config->item('WEBSITE_THEME') . 'self_test', $data);
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'expert_registration', $data);
     }
 
-    function test_start() {
-        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
-        $data['Title'] = 'Xcognitive| Self Test';
-        $data['base_url'] = base_url();
-        $this->load->view($this->config->item('WEBSITE_THEME') . 'test_start_page', $data);
-    }
-    
-    function exam(){
-         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
-        $data['Title'] = 'Xcognitive| Self Test';
-        $data['base_url'] = base_url();
-        $this->load->view($this->config->item('WEBSITE_THEME') . 'question_pattern', $data);
+    function save_expert() {
+        $post = $this->input->post();
+//        var_dump($post);die;
+        $data['expert_name'] = $post['expert_name'];
+        if (!empty($post['language'])) {
+            $data['skills'] = implode(',', $post['skills']);
+        }
+        $data['expert_designation'] = $post['expert_designation'];
+        if (!empty($post['language'])) {
+            $data['language'] = implode(',', $post['language']);
+        }
+        $data['facebook_link'] = $post['facebook_link'];
+        $data['twitter_link'] = $post['twitter_link'];
+        $data['linkedin_link'] = $post['linkedin_link'];
+        $data['expert_about'] = $post['expert_about'];
+        $data['summary'] = $post['summary'];
+        $data['education'] = $post['education'];
+        $data['award'] = $post['award'];
+        $data['experience'] = $post['experience'];
+        $data['publication_status'] = '2';
+
+        if (!empty($_FILES['experts_image']['name'])) {
+//            var_dump($_FILES);die;
+            $config['upload_path'] = './uploads/expert_image/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2097152';
+
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('experts_image')) {
+                $image_data = $this->upload->data();
+                $this->image_resize($image_data['full_path'], $image_data['file_name'], 900, 300);
+
+                $data['experts_image'] = $image_data['file_name'];
+            } else {
+                echo $this->upload->display_errors();
+                echo "Uploading Image problem...";
+            }
+        } else {
+            $data['experts_image'] = '';
+        }
+
+        $expet_id = $this->common_model->insert('expert_details', $data);
+        //        schedule insert
+        if (!empty($post['sat_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['sat'];
+            $time['time'] = $post['sat_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['sun_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['sun'];
+            $time['time'] = $post['sun_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['mon_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['mon'];
+            $time['time'] = $post['mon_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['tue_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['tue'];
+            $time['time'] = $post['tue_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['fri_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['fri'];
+            $time['time'] = $post['fri_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['wed_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['wed'];
+            $time['time'] = $post['wed_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+        if (!empty($post['thu_time'])) {
+            $time = array();
+            $time['expert_id'] = $expet_id;
+            $time['day_name'] = $post['thu'];
+            $time['time'] = $post['thu_time'];
+            $this->common_model->insert('expert_schedule', $time);
+        }
+
+        if (!empty($this->input->post('expert_email'))) {
+            $user['email'] = $this->input->post('expert_email');
+        }
+        $password = $this->input->post('expert_password');
+        $hasher = new PasswordHash(
+                $this->config->item('phpass_hash_strength', 'tank_auth'), $this->config->item('phpass_hash_portable', 'tank_auth')
+        );
+        $user['username'] = $this->input->post('expert_name');
+        $user['password'] = $hasher->HashPassword($password);
+        $user['activated'] = '1';
+        $user['created'] = date('Y-m-d H:i:s');
+        $user_id = $this->common_model->insert('users', $user);
+        $user_type['user_id'] = $user_id;
+        $user_type['type'] = $this->input->post('type');
+        $this->common_model->insert('user_type', $user_type);
+        $sdata['message'] = "<div class='alert alert-success no-border'><button type='button' class='close' data-dismiss='alert'><span>×</span><span class='sr-only'>Close</span></button><span class='text-semibold'>Well done!</span> Your Request is Pending for Admin's Pemission.</div>";
+        $this->session->flashdata($sdata);
+        redirect('website/expert_registration');
     }
 
    

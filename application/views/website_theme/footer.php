@@ -237,7 +237,9 @@
 <script src="<?= $theme_asset_url ?>js/bootstrap.min.js"></script>
 <script src="<?= $theme_asset_url ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= $theme_asset_url ?>js/login-register.js"></script>
-<script type="text/javascript" src="<?= $theme_asset_url ?>js/jquery.flexisel.js"></script>
+<script type="text/javascript" src="<?=$theme_asset_url?>js/selects/bootstrap_multiselect.js"></script>
+<script type="text/javascript" src="<?=$theme_asset_url?>/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?=$theme_asset_url?>/ckfinder/ckfinder.js"></script>
 <!-- jQuery sticky menu -->
 <script src="<?= $theme_asset_url ?>js/owl.carousel.min.js"></script>
 

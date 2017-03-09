@@ -66,7 +66,7 @@
             <?php }?>
 
         </div>
-        <h2>discovered the undoubtable</h2>
+        <h2>discovered the undoubtedly</h2>
         <div class="more_contact">
             <a href="<?=site_url('website/expert')?>">SEE ALL</a>
             <?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){?>
@@ -170,7 +170,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="latest-product">
-                    <<h3>Latest Books</h3>
+                    <h3>Latest Books</h3>
                     <hr/>
                     <div class="product-carousel-download">
                         <?php foreach ($bookDownloads as $book){?>
@@ -225,7 +225,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="latest-product">
-                    <<h3>Latest Article</h3>
+                    <h3>Latest Article</h3>
                     <hr/>
                     <div class="product-carousel">
                         <?php foreach ($get_blogs as $blog){?>
@@ -244,16 +244,16 @@
 </section> <!-- End main content area -->
 <section class="option text-center">
     <div class="guest_section">
-        <a href="">Guest Blog</a>
-        <p>Duo enim genera quae erant, fecit tria.</p>
+        <a href="<?=site_url('website/blogs_by_user/2')?>">Guest Blog</a>
+        <p>Blog post by user/Guest.</p>
     </div>
     <div class="admin_section">
-        <a href="">Admin Blog</a>
-        <p>Duo enim genera quae erant, fecit tria.</p>
+        <a href="<?=site_url('website/blogs_by_user/1')?>">Admin Blog</a>
+        <p>Blog post by Admin.</p>
     </div>
     <div class="savior_section">
-        <a href="">Guest Blog</a>
-        <p>Duo enim genera quae erant, fecit tria.</p>
+        <a href="<?=site_url('website/blogs_by_user/3')?>">Expert Blog</a>
+        <p>Blog post by Expert.</p>
     </div>
 </section>
 <?php include_once __DIR__ . '/footer.php'; ?>
