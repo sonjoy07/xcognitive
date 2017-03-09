@@ -1,6 +1,7 @@
 <?php include_once __DIR__ . '/header.php'; ?>
     <section class="blog_home">
         <div class="container">
+		<?php if(!empty($get_some_blog)){?>
             <div class="col-sm-9" id="blog_search">
 
                 <hr>
@@ -33,6 +34,9 @@
 
                 </div>
             </div>
+		<?php }else{
+			echo "<h1>NO BLOG POSTED</h1>"
+		}?>
             <?php include_once __DIR__ . '/widget.php';?>
         </div>
     </section>

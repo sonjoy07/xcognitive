@@ -354,7 +354,7 @@ class Website extends CI_Controller {
         $user_type['type'] = $this->input->post('type');
         $this->common_model->insert('user_type', $user_type);
         $sdata['message'] = "<div class='alert alert-success no-border'><button type='button' class='close' data-dismiss='alert'><span>×</span><span class='sr-only'>Close</span></button><span class='text-semibold'>Well done!</span> Your Request is Pending for Admin's Pemission.</div>";
-        $this->session->flashdata($sdata);
+        $this->session->set_flashdata($sdata);
         redirect('website/expert_registration');
     }
 

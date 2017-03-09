@@ -198,7 +198,7 @@ class Expert_controller extends CI_Controller {
         }
         $this->common_model->insert('blogs', $data);
         $sdata['message'] = "<div class='alert alert-success no-border'><button type='button' class='close' data-dismiss='alert'><span>×</span><span class='sr-only'>Close</span></button><span class='text-semibold'>Well done!</span> Your Post is Pending for Admin's Pemission.</div>";
-        $this->session->flashdata($sdata);
+        $this->session->set_flashdata($sdata);
         redirect('expert_controller/add_blog');
     }
 

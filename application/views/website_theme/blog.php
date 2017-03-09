@@ -18,6 +18,7 @@
             <!--<p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>-->
 
             <!--<hr>-->
+			<?php if(!empty($get_last_blog)){?>
 
             <!-- Preview Image -->
             <img class="img-responsive" src="<?= base_url() ?>uploads/blog_image/<?= $get_last_blog->blog_image ?>" alt="">
@@ -29,9 +30,12 @@
             <p class="lead">
                 by <?= $get_last_blog->auther_name ?>
             </p>
+			<?php }?>
             <hr>
             <div class="row"> 
-                <?php foreach ($get_some_blog as $blog) { ?> 
+                <?php
+				if(!empty($get_some_blog)){
+				foreach ($get_some_blog as $blog) { ?> 
 
                 <div class="col-sm-4 col-lg-4 col-md-4" >
                     <div class="thumbnail" >
@@ -55,7 +59,11 @@
                         </div>
                     </div>
 
-                <?php } ?>
+                <?php }
+				}else{
+			echo "<h1>NO BLOG POSTED</h1>";
+		}	
+		?>
             
     </div>
 </div>

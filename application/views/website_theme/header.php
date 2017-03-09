@@ -57,8 +57,10 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <?php
                                 if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==2){
+									if(isset($blog)=='blog'){
                                 ?>
                                 <li><a href="<?= site_url('user_controller/add_blog')?>">Add Blog</a></li>
+									<?php }?>
                                     <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> <?=$this->session->userdata('username')?> <i class="caret"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li><a href="<?=site_url('user_controller/userProfile')?>">Profile</a></li>
@@ -67,7 +69,7 @@
                                         </ul>
                                     </li>
                                 <?php
-                                }if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==3){
+                                }else if ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==3){
                                 ?>
                                 <li><a href="<?= site_url('expert_controller/add_blog')?>">Add Blog</a></li>
                                     <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> <?=$this->session->userdata('username')?> <i class="caret"></i></a>

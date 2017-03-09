@@ -13,6 +13,11 @@
                 'method' => 'post');
             echo form_open_multipart('website/save_expert', $attributes)
             ?>
+			<?php
+                if ($this->session->flashdata('message')) {
+                    echo $this->session->flashdata('message');
+                }
+                ?>
             <fieldset class="content-group">
                 <legend class="text-bold">Add Experts</legend>
 

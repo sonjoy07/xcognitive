@@ -15,8 +15,8 @@
                 }
                 ?>
                 <?php
-                if (isset($message)) {
-                    echo $message;
+                if ($this->session->flashdata('message')) {
+                    echo $this->session->flashdata('message');
                 }
                 ?>
                 <fieldset class="content-group">

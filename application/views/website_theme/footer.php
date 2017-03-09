@@ -215,7 +215,7 @@
                                    value="<?= $this->session->userdata('username'); ?>" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <input type="email" name="email"  value="<?= $this->session->userdata('email'); ?>" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <textarea name="message" id="" cols="30" rows="10" class="form-control">
