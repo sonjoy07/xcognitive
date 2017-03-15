@@ -4,17 +4,14 @@
             <h3>USEFUL LINKS</h3>
             <hr/>
             <ul style="list-style-type:square">
-                        <span class="col-md-6">
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
-                            <li><a href="">link</a></li>
+                        <span class="col-md-8">
+                            <li><a href="">Experts</a></li>
+                            <li><a href="">Discussions</a></li>
+                            <li><a href="">Most Asked Questions</a></li>
+                            <li><a href="">Motivational Quotes</a></li>
+                            <li><a href="">Articles</a></li>
                         </span>
-                <span class="col-md-6">
+<!--                <span class="col-md-6">
                             <li><a href="">link</a></li>
                             <li><a href="">link</a></li>
                             <li><a href="">link</a></li>
@@ -23,7 +20,7 @@
                             <li><a href="">link</a></li>
                             <li><a href="">link</a></li>
                             <li><a href="">link</a></li>
-                        </span>
+                        </span>-->
 
             </ul>
         </div>
@@ -61,29 +58,11 @@
             <div class="col l12 s12 padding0">
 
                 <div class="col l12 s12 footer-yd-about ">
-                    <p class="lh-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quare, quoniam de
-                        primis naturae commodis satis dietum est nunc de maioribus consequentibusque videamus.</p><br>
-                    <span style="color: #666;">Quod non faceret, si in voluptate summum bonum poneret. Quod autem principium officii quaerunt, melius quam Pyrrho; Atque hoc loco similitudines eas, quibus illi uti solent, dissimillimas proferebas. :</span>
-                    <ul class="footer-about-ul">
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                        <li class="footer-about-list">
-                            Quod autem principium officii quaerunt, melius quam Pyrrho; Atq
-                        </li>
-                    </ul>
+                    <p class="lh-footer">At Xcognitive, we provide an online counseling and emotional support platform designed to foster mental wellness. It anonymously connects you with the right expert consisting of psychologists, psychotherapists, counselors, life coaches, career guides and people with rich and deep life experience, who understand you and guide you through completely confidential individual sessions (through free online chats).</p><br>
+                                    </div>
+
+                    <span style="color: #666;">At Xcognitive, we provide an online counseling and emotional support platform designed to foster mental wellness. It anonymously connects you with the right expert consisting of psychologists, psychotherapists, counselors, life coaches, career guides and people with rich and deep life experience, who understand you and guide you through completely confidential individual sessions (through free online chats).:</span>
+                   
                     <span class="footer-bold-text">Quod autem principium officii quaerunt, melius quam Pyrrho; Atq</span>
                     <br><span class="footer-bold-text">Vandrevala Foundation Helpline </span>- 1 860 266 2345 (24x7),
                     &nbsp;&nbsp;<span class="footer-bold-text">Aasra - </span>+91 22 2754 6669 (24x7).<br>
@@ -91,18 +70,6 @@
                                 href="/counselling">Counseling</a>&nbsp;|&nbsp;<a href="/stress">Stress</a>&nbsp;|&nbsp;<a
                                 href="/depression">Depression</a>&nbsp;|&nbsp;<a href="/addiction">Addiction</a></div>
 
-                </div>
-                <div class="mobile footer-yd-about hide-on-med-and-up hide-on-small-only">
-                    <p class="lh-footer">Quod non faceret, si in voluptate summum bonum poneret. Quod autem principium
-                        officii quaerunt, melius quam Pyrrho; Atque hoc loco similitudines eas, quibus illi uti s<br>
-                        <span class="">Quod non faceret, si in voluptate summum bonum poneret. Quod autem principium officii quaerunt, melius quam Pyrrho; Atque hoc loco similitudines eas, quibus illi uti s</span>
-                        <br><span class="footer-bold-text">Vandrevala Foundation Helpline - 01654787985 (24x7),</span>
-                        <br><span class="footer-bold-text">Aasra - +88019894989 (24x7).</span>
-                    </p>
-                    <div class="hub-and-spoke-link-footer">Meanwhile, know more about: <a href="">Anxiety</a>&nbsp;|&nbsp;<a
-                                href="">Counseling</a>&nbsp;|&nbsp;<a href="/stress">Stress</a>&nbsp;|&nbsp;<a href="/">Depression</a>&nbsp;|&nbsp;<a
-                                href="/">Addiction</a></div>
-                    <p></p>
                 </div>
             </div>
         </div>

@@ -323,6 +323,14 @@ class User_login extends CI_Controller
         $data['user_id'] = $user_id;
         $data['type'] = '2';
         $this->website_model->save('user_type', $data);
+        $user_info['user_id'] = $user_id;
+        $user_info['gender'] = $this->input->post('gender');
+        $user_info['age'] = $this->input->post('age');
+        $dd = $this->input->post('dd');
+        $mm = $this->input->post('mm');
+        $yy = $this->input->post('yy');
+        $user_info['dob'] = $dd.'-'.$mm.'-'.$yy;
+        $this->website_model->save('user_info', $user_info);
         redirect('website');
     }
 

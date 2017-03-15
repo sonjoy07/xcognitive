@@ -11,6 +11,8 @@ class Website extends CI_Controller {
         $this->load->model('common_model');
         
         $this->load->model('Google_user', 'user');
+        
+        $this->load->model('Facebook_user', 'fuser');
 
         $this->load->helper(array('form', 'url'));
         
@@ -18,9 +20,7 @@ class Website extends CI_Controller {
 
         $this->lang->load('tank_auth');
 
-        $this->facebook_login();
         
-        $this->google_login();
         
          $this->load->library('ckeditor');
 
@@ -135,6 +135,15 @@ class Website extends CI_Controller {
         $data['getSubjectWiseExpert'] = $this->website_model->getSearchDetails($search);
         $this->load->view($this->config->item('WEBSITE_THEME') . 'search_blog', $data);
     }
+    
+    function user_login(){
+        $this->facebook_login();        
+        $this->google_login();
+        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| User Registration';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'user_registration', $data);
+    }
 
     function google_login() {
         //        google login
@@ -181,6 +190,7 @@ class Website extends CI_Controller {
                 $this->session->set_userdata('userData', $userData);
                 $this->session->set_userdata('user_type', 2);
                 $this->session->set_userdata('status', 1);
+                $this->session->set_userdata('username', $userData['username']);
             } else {
                 $data['userData'] = array();
             }
@@ -218,12 +228,13 @@ class Website extends CI_Controller {
             $userData['profile_url'] = 'https://www.facebook.com/' . $userProfile['id'];
             $userData['user_image'] = $userProfile['picture']['data']['url'];
             // Insert or update user data
-            $userID = $this->user->checkUser($userData);
+            $userID = $this->fuser->checkUser($userData);
             if (!empty($userID)) {
                 $data['userData'] = $userData;
                 $this->session->set_userdata('userData', $userData);
                 $this->session->set_userdata('user_type', 2);
                 $this->session->set_userdata('status', 1);
+                $this->session->set_userdata('username', $userData['username']);
             } else {
                 $data['userData'] = array();
             }
@@ -247,7 +258,7 @@ class Website extends CI_Controller {
         $post = $this->input->post();
 //        var_dump($post);die;
         $data['expert_name'] = $post['expert_name'];
-        if (!empty($post['language'])) {
+        if (!empty($post['skills'])) {
             $data['skills'] = implode(',', $post['skills']);
         }
         $data['expert_designation'] = $post['expert_designation'];
@@ -258,10 +269,7 @@ class Website extends CI_Controller {
         $data['twitter_link'] = $post['twitter_link'];
         $data['linkedin_link'] = $post['linkedin_link'];
         $data['expert_about'] = $post['expert_about'];
-        $data['summary'] = $post['summary'];
         $data['education'] = $post['education'];
-        $data['award'] = $post['award'];
-        $data['experience'] = $post['experience'];
         $data['publication_status'] = '2';
 
         if (!empty($_FILES['experts_image']['name'])) {
@@ -285,77 +293,46 @@ class Website extends CI_Controller {
         } else {
             $data['experts_image'] = '';
         }
+        if (!empty($_FILES['expert_cv']['name'])) {
+//            var_dump($_FILES);die;
+            $config['upload_path'] = './uploads/expert_cv/';
+            $config['allowed_types'] = 'jpg|png|jpeg|pdf|docx';
+            $config['max_size'] = '2097152';
+
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('expert_cv')) {
+                $image_data = $this->upload->data();
+                $data['expert_cv'] = $image_data['file_name'];
+            } else {
+                echo $this->upload->display_errors();
+                echo "Uploading Image problem...";
+            }
+        } else {
+            $data['expert_cv'] = '';
+        }
 
         $expet_id = $this->common_model->insert('expert_details', $data);
         //        schedule insert
-        if (!empty($post['sat_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['sat'];
-            $time['time'] = $post['sat_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['sun_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['sun'];
-            $time['time'] = $post['sun_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['mon_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['mon'];
-            $time['time'] = $post['mon_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['tue_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['tue'];
-            $time['time'] = $post['tue_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['fri_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['fri'];
-            $time['time'] = $post['fri_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['wed_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['wed'];
-            $time['time'] = $post['wed_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-        if (!empty($post['thu_time'])) {
-            $time = array();
-            $time['expert_id'] = $expet_id;
-            $time['day_name'] = $post['thu'];
-            $time['time'] = $post['thu_time'];
-            $this->common_model->insert('expert_schedule', $time);
-        }
-
-        if (!empty($this->input->post('expert_email'))) {
-            $user['email'] = $this->input->post('expert_email');
-        }
-        $password = $this->input->post('expert_password');
-        $hasher = new PasswordHash(
-                $this->config->item('phpass_hash_strength', 'tank_auth'), $this->config->item('phpass_hash_portable', 'tank_auth')
-        );
-        $user['username'] = $this->input->post('expert_name');
-        $user['password'] = $hasher->HashPassword($password);
-        $user['activated'] = '1';
-        $user['created'] = date('Y-m-d H:i:s');
-        $user_id = $this->common_model->insert('users', $user);
-        $user_type['user_id'] = $user_id;
-        $user_type['type'] = $this->input->post('type');
-        $this->common_model->insert('user_type', $user_type);
+        
+       
         $sdata['message'] = "<div class='alert alert-success no-border'><button type='button' class='close' data-dismiss='alert'><span>×</span><span class='sr-only'>Close</span></button><span class='text-semibold'>Well done!</span> Your Request is Pending for Admin's Pemission.</div>";
         $this->session->set_flashdata($sdata);
         redirect('website/expert_registration');
+    }
+    
+    function image_resize($path, $file, $width, $height)
+    {
+        $config_resize['image_library'] = 'gd2';
+        $config_resize['source_image'] = $path;
+        $config_resize['create_thumb'] = FALSE;
+        $config_resize['maintain_ratio'] = TRUE;
+        $config_resize['width'] = $width;
+        $config_resize['height'] = $height;
+        $config_resize['new_image'] = './uploads/blog_image/thumb/' . $file;
+        $this->load->library('image_lib', $config_resize);
+        $this->image_lib->resize();
     }
 
    

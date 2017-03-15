@@ -4,17 +4,17 @@
     <div class="text-content">
         <h1><?= $settings->welcome_message ?></h1>
         <hr/>
-        <h3 class="intro_head"><?= $settings->introduction ?><?php echo $this->session->userdata('user_type')?></h3>
+        <h3 class="intro_head"><?= $settings->introduction ?></h3>
         <div class="intro_button">
             <?php
-            if ($this->session->userdata('user_type')==2){
+            if ($this->session->userdata('user_type') == 2){
             ?>
             <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>
                 Chat</a>
             <a href="" ><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                 Appointment</a>
             <?php }else{?>
-                <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-comment-o" aria-hidden="true"></i>
+            <a href="" class="chat_button" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-comment-o" aria-hidden="true"></i>
                     Chat</a>
                 <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                     Appointment</a>

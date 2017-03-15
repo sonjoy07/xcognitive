@@ -7,8 +7,8 @@ Description: This is a Doctor Appoinment website.
 
 */
 a:hover{
-     text-decoration: none;
- }
+    text-decoration: none;
+}
 .navbar-brand{
     padding: 5px 0;
     margin-bottom: 5px;
@@ -242,6 +242,15 @@ video{
 .navbar-nav li a:hover{
     border: 1px solid #00B29A;
 }
+.login_button a{
+    background: #00B29A;  
+    color: #fff!important;
+    border-radius: 3px;
+}
+.login_button a:hover{
+    border: 1px solid #00B29A;   
+    color: #00B29A!important;  
+}
 .drop{
     cursor: pointer;
 }
@@ -314,6 +323,9 @@ video{
     color: #fff;
     font-weight: bold;
     font-size: 25px;
+}
+.chat_button{
+    padding: 13px 155px!important;
 }
 .intro_button a:last-child{
     background: #FBB41B;
@@ -745,7 +757,7 @@ footer{
 .experts_details ul li:last-child a{
     border: none;
 }
- /*blog home page*/
+/*blog home page*/
 .blog_home,.expert_description{
     margin-top: 100px;
     padding: 80px 0;
@@ -868,8 +880,8 @@ footer{
 .expert_category_tags ul{
     list-style: none;
 }.expert_category_tags ul li{
-     display: inline;
- }
+    display: inline;
+}
 .expert_category_tags ul li a{
     padding: 10px 20px;
     color: #9E9E9E;
@@ -1031,7 +1043,7 @@ footer{
     position: relative;
 }
 /*.product-f-image img{*/
-    /*height: 300px;*/
+/*height: 300px;*/
 /*}*/
 .product-hover {
     height: 100%;
@@ -1289,7 +1301,126 @@ input[type="file"] {
 .feedback{
     margin-bottom: 50px;
 }
+/*user registration*/
+.user_home{
+    background: url('../images/user_bg.jpg') scroll no-repeat 0 0/ 100% 100%;
+    min-height: 800px;
+    margin-top: 80px;
+}
+.user_top{   
+    margin-top: 116px; 
+    margin-bottom: 40px;
+}
+.user_home .login_area{
+    background: #fff;
+    padding: 50px;
+    color: #000;
+}
+.user_home .social{
+   width: 250px;
+   margin: 0 auto;
+}
+.user_home .google{
+    padding: 10px 50px;
+    border-radius: 3px;
+    background: #DB4437;
+    margin-right: 4px;
+    color: #fff;
+}
+.user_home .facebook{
+    padding: 10px 50px;
+    border-radius: 3px;
+    background: #3B5998;
+    color: #fff;
+}
+.loginBox input,.registerBox input[type="text"],.registerBox input[type="password"]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: 0;
+    height: 3rem;
+    width: 100%;
+    font-size: 2rem;
+    margin: 0 0 15px;
+    padding: 25px 0;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    transition: all .3s;
+}
 
+.loginBox .btn-register {
+    background-color: #00BBFF;
+    border-color: #00BBFF;
+    border-width: 0;
+    color: #FFFFFF;
+    display: block;
+    margin: 0 auto;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    width: 100%;
+}
+.registerBox select{
+    border-radius: 5px;
+    border: 1px solid #767676;
+    width: 200px;
+    padding: 4px 0;
+}
+.registerBox .heading{
+    font-size: 20px;
+    color: #767676;
+    margin: 8px 0;
+}
+.loginBox input:focus,.registerBox input[type="text"]:focus,.registerBox input[type="password"]:focus{
+    color: #0DD0E3;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #0DD0E3;
+}
+/*.expert registration*/
+.expert_home{
+    margin-top: 100px;
+}
+.expert_header{
+    background: url('../images/cool-background.jpg');
+    height: 200px;
+}
+.expert_header h1{
+    text-align: center;
+    color: #fff;
+    padding: 30px 0;
+}
+.expert_home input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: 0;
+    height: 3rem;
+    width: 100%;
+    font-size: 2rem;
+    margin: 0 0 15px;
+    padding: 25px 0;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    transition: all .3s;
+}
+.expert_home input:focus{
+    color: #0DD0E3;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #0DD0E3;
+}
+.expert_home legend{
+    box-shadow: 1px 0px 9px 4px #0dd0e3;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
 /*media query */
 @media (max-width: 1300px) {
     .text-content {
