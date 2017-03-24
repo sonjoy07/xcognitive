@@ -58,17 +58,9 @@
             <div class="col l12 s12 padding0">
 
                 <div class="col l12 s12 footer-yd-about ">
-                    <p class="lh-footer">At Xcognitive, we provide an online counseling and emotional support platform designed to foster mental wellness. It anonymously connects you with the right expert consisting of psychologists, psychotherapists, counselors, life coaches, career guides and people with rich and deep life experience, who understand you and guide you through completely confidential individual sessions (through free online chats).</p><br>
+                    <p class="lh-footer"><?=$settings->about_section?></p><br>
                                     </div>
-
-                    <span style="color: #666;">At Xcognitive, we provide an online counseling and emotional support platform designed to foster mental wellness. It anonymously connects you with the right expert consisting of psychologists, psychotherapists, counselors, life coaches, career guides and people with rich and deep life experience, who understand you and guide you through completely confidential individual sessions (through free online chats).:</span>
-                   
-                    <span class="footer-bold-text">Quod autem principium officii quaerunt, melius quam Pyrrho; Atq</span>
-                    <br><span class="footer-bold-text">Vandrevala Foundation Helpline </span>- 1 860 266 2345 (24x7),
-                    &nbsp;&nbsp;<span class="footer-bold-text">Aasra - </span>+91 22 2754 6669 (24x7).<br>
-                    <div class="hub-and-spoke-link-footer">Meanwhile, know more about: <a href="/anxiety">Anxiety</a>&nbsp;|&nbsp;<a
-                                href="/counselling">Counseling</a>&nbsp;|&nbsp;<a href="/stress">Stress</a>&nbsp;|&nbsp;<a
-                                href="/depression">Depression</a>&nbsp;|&nbsp;<a href="/addiction">Addiction</a></div>
+                    
 
                 </div>
             </div>

@@ -27,7 +27,7 @@ class Expert_controller extends CI_Controller {
         $this->load->model('website_model');
 
         $this->load->model('common_model');
-         if (!$this->tank_auth->is_logged_in()|| $this->session->userdata('user_type')!=2) {         //not logged in
+         if (!$this->tank_auth->is_logged_in()|| $this->session->userdata('user_type')!=3) {         //not logged in
             redirect('website');
             return 0;
         }
@@ -42,7 +42,23 @@ class Expert_controller extends CI_Controller {
 //Add Ckfinder to Ckeditor
         $this->ckfinder->SetupCKEditor($this->ckeditor, '../../assets/ckfinder/');
     }
+	
+	function expertProfile() {
+        $user_id = $this->session->userdata('user_id');
+        $data['user_profile'] = $this->website_model->get_user_profile($user_id);
+        $data['user_info'] = $this->website_model->get_user_info($user_id);
+        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Experts Deailts';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'userProfile', $data);
+    }
 
+	function resetPasswords() {
+        $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Experts Deailts';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'resetPassword', $data);
+    }
     
 
     function edit_expert($id) {

@@ -225,7 +225,7 @@
                             </div>
                         </fieldset>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                            <button type="submit" class="btn btn-success">Save <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
                         <?= form_close(); ?>
                     </div>
@@ -235,6 +235,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/libraries/jquery.min.js"></script>
+	
+<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.multiselect-select-all-filtering').multiselect();

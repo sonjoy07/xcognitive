@@ -39,7 +39,7 @@
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
                             <div class="datatable-scroll">
                                 <table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0"
-                                       role="grid" aria-describedby="DataTables_Table_0_info">
+                                       >
                                     <thead>
                                     <tr role="row">
                                         <th>Sl no</th>
@@ -105,6 +105,5 @@
 </style>
 <script type="text/javascript">
     $('#DataTables_Table_0').DataTable({
-//        "scrollX": true
     });
 </script>

@@ -22,6 +22,8 @@
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/loaders/blockui.min.js"></script>
+	
+<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 
 
 	<!-- /core JS files -->

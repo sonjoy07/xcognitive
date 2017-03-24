@@ -53,7 +53,7 @@ class User_controller extends CI_Controller{
         $data['user_profile'] = $this->website_model->get_user_profile($user_id);
         $data['user_info'] = $this->website_model->get_user_info($user_id);
         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
-        $data['Title'] = 'Xcognitive| Experts Deailts';
+        $data['Title'] = 'Xcognitive| User Profile';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('WEBSITE_THEME') . 'userProfile', $data);
     }

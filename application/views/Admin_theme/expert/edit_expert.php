@@ -121,31 +121,31 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Expet About</label>
                                 <div class="col-lg-10">
-                                    <?php echo $this->ckeditor->editor("expert_about",$get_all_info->expert_name);?>
+                                    <?php echo $this->ckeditor->editor("expert_about",$get_all_info->expert_about);?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Summary</label>
                                 <div class="col-lg-10">
-                                    <?php echo $this->ckeditor->editor("summary",$get_all_info->expert_name);?>
+                                    <?php echo $this->ckeditor->editor("summary",$get_all_info->summary);?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Education</label>
                                 <div class="col-lg-10">
-                                    <?php echo $this->ckeditor->editor("education",$get_all_info->expert_name);?>
+                                    <?php echo $this->ckeditor->editor("education",$get_all_info->education);?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Award</label>
                                 <div class="col-lg-10">
-                                    <?php echo $this->ckeditor->editor("award",$get_all_info->expert_name);?>
+                                    <?php echo $this->ckeditor->editor("award",$get_all_info->award);?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Experiance</label>
                                 <div class="col-lg-10">
-                                    <?php echo $this->ckeditor->editor("experience",$get_all_info->expert_name);?>
+                                    <?php echo $this->ckeditor->editor("experience",$get_all_info->experience);?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -298,7 +298,7 @@
                             </div>
                         </fieldset>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                            <button type="submit" class="btn btn-success">Update <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
                         <?= form_close(); ?>
                     </div>
@@ -308,6 +308,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/libraries/jquery.min.js"></script>
+	
+<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.multiselect-select-all-filtering').multiselect();

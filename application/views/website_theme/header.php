@@ -51,8 +51,9 @@
                         <div class="collapse navbar-collapse main_menu" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li><a href="<?= site_url('website/expert')?>">Experts <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Discussions</a></li>
+                                <li><a href="<?= site_url('forum')?>">Ask & Answer</a></li>
                                 <li><a href="<?= site_url('website/blog')?>">Blog</a></li>
+                                <li><a href="<?= site_url('')?>">Self Test</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <?php
@@ -67,18 +68,18 @@
                                         </ul>
                                     </li>
                                 <?php
-                                }elseif ($this->tank_auth->is_logged_in() && $this->session->userdata('user_type')==3){
+                                }elseif ($this->session->userdata('user_type')==3){
                                 ?>
                                 <li><a href="<?= site_url('expert_controller/add_blog')?>">Add Blog</a></li>
                                     <li><a class="dropdown-toggle drop" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-unlock"></i> <?=$this->session->userdata('username')?> <i class="caret"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="<?=site_url('user_controller/userProfile')?>">Profile</a></li>
-                                            <li><a href="<?=site_url('user_controller/resetPasswords')?>">Reset Password</a></li>
+                                            <li><a href="<?=site_url('expert_controller/expertProfile')?>">Profile</a></li>
+                                            <li><a href="<?=site_url('expert_controller/resetPasswords')?>">Reset Password</a></li>
                                             <li><a href="<?=site_url('user_login/logout')?>">Logout</a></li>
                                         </ul>
                                     </li>
                                 <?php }else{?>
-                                    <li><a href="<?=site_url('website/expert_registration')?>">Become An Expert</a></li>
+                                    <li><a href="<?=site_url('website/expert_registration')?>" class="become_menu">Become An Expert</a></li>
                                     <li class="login_button"><a href="<?=site_url('website/user_login');?>"><i class="fa fa-lock"></i> Login</a></li>                                    
                                 <?php }?>
                             </ul>

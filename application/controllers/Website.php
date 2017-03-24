@@ -32,6 +32,8 @@ class Website extends CI_Controller {
 
 //Add Ckfinder to Ckeditor
         $this->ckfinder->SetupCKEditor($this->ckeditor, '../../assets/ckfinder/');
+        $data['settings'] = $this->website_model->get_all_setting();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'empty', $data);
     }
 
     function index() {
@@ -334,6 +336,18 @@ class Website extends CI_Controller {
         $this->load->library('image_lib', $config_resize);
         $this->image_lib->resize();
     }
+	function forum(){
+		$data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Discussions';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'forum', $data);
+	}
+	function forum_details(){
+		$data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
+        $data['Title'] = 'Xcognitive| Discussions';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('WEBSITE_THEME') . 'forum_details', $data);
+	}
 
    
 

@@ -46,7 +46,7 @@
         <div class="more_details">
             <?php foreach ($experts as $expert){?>
             <div class="col-sm-4">
-                <img src="<?= base_url() ?>assets/uploads/files/<?=$expert->experts_image?>" alt="..." class="img-circle">
+                <img src="<?= base_url() ?>uploads/expert_image/<?=$expert->experts_image?>" alt="..." class="img-circle">
                 <h4><a href="<?=site_url('website/expert_details/'.$expert->expert_id)?>"><?= $expert->expert_name?></a></h4>
                 <p><?=$expert->expert_designation?></p>
                 <div class="contact">
@@ -54,10 +54,10 @@
                     ?>
                     <a href=""><i class="fa fa-circle"></i>
                         CHAT</a>
-                    <a href="" > MESSAGE</a>
+                    <a href="" > APPOINMENT</a>
                     <?php }else{?>
                         <a href="" type="button"  data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-circle"></i> CHAT</a>
-                        <a href="">MESSAGE</a>
+                        <a href="">APPOINMENT</a>
                     <?php }?>
 
                 </div>
