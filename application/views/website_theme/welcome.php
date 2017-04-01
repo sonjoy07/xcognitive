@@ -211,7 +211,9 @@
         <hr/>
         <?php foreach($get_services as $service){?>
         <div class="col-sm-3">
-            <i class="fa fa-clock-o"></i>
+			<div class="why_icon">
+				<img src="<?=base_url()?>assets/uploads/files/<?=$service->icon?>" alt="" />
+			</div>
             <h4><?= $service->service_heading?></h4>
             <p><?= $service->service_description?> </p>
         </div>

@@ -16,6 +16,9 @@ a:hover{
 .navbar-brand img{
     height: 75px;
 }
+.navbar-nav > li{
+	margin-top: 4px;
+}
 iframe{
     width: 100%;
 }
@@ -221,11 +224,10 @@ video{
 /*////////////*/
 .text-content{
     position: absolute;
-    left: 50%;
+    left: 20%;
+	right: 20%;
     top: 50%;
     z-index: 2;
-    width: 1240px;
-    margin-left: -620px;
     text-align: center;
 }
 .navbar-nav li a img{
@@ -515,6 +517,21 @@ video{
     font-size: 120px;
     content: "\f00d";
 }
+.why_icon{
+	border: .8rem solid #00BFA5;
+border-radius: 50%;
+height: 9.5rem;
+width: 9.5rem;
+text-align: center;
+padding: 3.5rem 9rem 9rem 5rem !important;
+margin: .5rem 0;
+display: inline-block;
+float: none !important;
+}
+.useful p{
+	color: #666;
+	
+}
 .option .guest_section,.option .admin_section,.option .savior_section{
     width: 33.33%;
     float: left;
@@ -540,7 +557,8 @@ video{
     font-size: 18px;
 }
 .option .guest_section:hover,.option .admin_section:hover,.option .savior_section:hover{
-    box-shadow:0px 8px 5px 6px #4C4C4C;
+    transition: box-shadow .25s;
+box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 }
 .option .admin_section{
     background: #FFC107;
@@ -1845,145 +1863,4 @@ wrapper.bullet .badge-category-bg {
     right: 0px;
     top: 13px;
     font-size: 0.571em;
-}
-/*media query */
-@media (max-width: 1300px) {
-    .text-content {
-        top: 40%;
-    }
-    .text-content h3{
-        font-size: 16px;
-    }
-    .intro_head{
-        margin-top: 70px;
-    }
-    .intro_button a {
-        padding: 8px 70px;
-        font-size: 12px;
-    }
-}
-@media (max-width: 1100px) {
-    .text-content {
-        top: 30%;
-        font-size: 14px;
-    }
-    .text-content h3{
-        font-size: 14px;
-    }
-    .intro_head{
-        margin-top: 50px;
-    }
-    .intro_button{
-        margin-top: 20px
-    }
-    .intro_button a {
-        padding: 5px 50px;
-        font-size: 10px;
-    }
-    .consoling{
-        display: none!important;
-    }
-}
-
-@media (max-width: 700px) {
-    h3{
-        font-size: 16px;
-    }
-    .text-content {
-        top: 20%;
-        font-size: 14px;
-    }
-    .text-content h3{
-        font-size: 13px;
-    }
-    .intro_head{
-        margin-top: 20px;
-    }
-    .intro_button a {
-        padding: 5px 30px;
-        font-size: 10px;
-    }
-    .more_details .col-sm-4 {
-        margin-top: 30px;
-    }
-    .more_contact a{
-        padding: 6px 30px;
-    }
-    h2{
-        font-size: 18px;
-    }
-    .contact a {
-        padding: 6px;
-        font-size: 10px;
-    }
-    iframe{
-        height: 300px;
-        margin-top: 40px!important;
-    }
-    .option .guest_section,.option .admin_section, .option .savior_section{
-        width: 100%;
-        float: none;
-    }
-    .useful_information button, .contact_link {
-        padding: 8px 88px;
-    }
-    .navbar {
-        min-height: 56px;
-    }
-    .navbar-brand > img {
-        height: 50px;
-    }
-
-
-}
-
-@media (max-width: 500px) {
-    .text-content {
-        top: 15%;
-        font-size: 12px;
-    }
-    .text-content h3,h2{
-        font-size: 8px;
-    }
-    .intro_head{
-        margin-top: 10px;
-    }
-    .intro_button a {
-        padding: 5px 15px;
-        font-size: 8px;
-    }
-}
-@media (max-width: 400px) {
-    .text-content {
-        top: 13%;
-        font-size: 8px;
-    }
-    .text-content h3{
-        font-size: 6px;
-    }
-    .intro_head{
-        margin-top: 6px;
-    }
-    .intro_button a {
-        padding: 5px 12px;
-        font-size: 6px;
-    }
-    h3{
-        font-size: 14px;
-    }
-    .more_details img{
-        height: 80px;
-        width: 80px;
-    }
-    .useful_information button, .contact_link {
-        padding: 8px 100px;
-    }
-    .option .guest_section a, .option .admin_section a, .option .savior_section a {
-        padding: 10px 50px;
-        font-size: 14px;
-    }
-    .option p {
-        font-size: 15px;
-    }
-
 }

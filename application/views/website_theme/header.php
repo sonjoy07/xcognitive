@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/login-register.css">
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/owl.carousel.css">
         <link rel="stylesheet" href="<?=$theme_asset_url?>css/style.css">
+        <link rel="stylesheet" href="<?=$theme_asset_url?>css/responsive.css">
         <script src="<?=$theme_asset_url?>js/vendor/modernizr-2.8.3.min.js"></script>
         <!--<script src="<?=$theme_asset_url?>js/vendor/jquery.min.js"></script>-->
     </head>
