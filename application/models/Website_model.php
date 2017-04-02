@@ -155,4 +155,8 @@ class Website_model extends CI_Model
      function get_all_published_book_download(){
          return $this->db->where('publication_status',1)->get('book_download')->result();
      }
+     
+     function get_user_opinion(){
+         return $this->db->where('testimonial.publication_status',1)->join('users','testimonial.user_id = users.id')->get('testimonial')->result();
+     }
 }

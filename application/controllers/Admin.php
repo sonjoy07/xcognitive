@@ -491,7 +491,7 @@ class Admin extends CI_Controller
         $crud->set_table('book_download')
             ->set_subject('Book Download')
             ->set_field_upload('book_front_image')
-            ->callback_after_upload(array($this,'example_callback_after_upload'))
+//            ->callback_after_upload(array($this,'example_callback_after_upload'))
             ->set_field_upload('book_download_file')
             ->order_by('book_id', 'desc')
             ->unset_jquery();
@@ -526,11 +526,11 @@ class Admin extends CI_Controller
 
     function example_callback_after_upload($uploader_response,$field_info, $files_to_upload)
     {
-        $this->load->library('image_moo');
+        $this->load->library('Image_moo');
 //Is only one file uploaded so it ok to use it with $uploader_response[0].
         $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-        $this->image_moo->load($file_uploaded)->resize(800,600)->save($file_uploaded,true);
+        $this->Image_moo->load($file_uploaded)->resize(800,600)->save($file_uploaded,true);
 
         return true;
     }

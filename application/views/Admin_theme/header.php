@@ -38,7 +38,7 @@
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/plugins/pickers/daterangepicker.js"></script>
 
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/app.js"></script>
-	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/dashboard.js"></script>
+	<!--<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/dashboard.js"></script>-->
         <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="<?=$theme_asset_url?>/assets/ckfinder/ckfinder.js"></script>
         <!-- Theme JS files -->
@@ -46,7 +46,7 @@
 <!--	<script type="text/javascript" src="--><?//=$theme_asset_url?><!--assets/js/plugins/forms/selects/select2.min.js"></script>-->
 
 	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/core/app.js"></script>
-	<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/datatables_basic.js"></script>
+	<!--<script type="text/javascript" src="<?=$theme_asset_url?>assets/js/pages/datatables_basic.js"></script>-->
         <?php
 // echo "<pre>";
 // print_r($asset);

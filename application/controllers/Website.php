@@ -42,6 +42,8 @@ class Website extends CI_Controller {
         $data['subjects'] = $this->website_model->get_all('subjects');
         $data['settings'] = $this->website_model->get_all_setting();
         $data['experts'] = $this->website_model->get_experts_info();
+        $data['users_opinion'] = $this->website_model->get_user_opinion();
+//        var_dump($data['users_opinion']);die;
         $data['bookDownloads'] = $this->website_model->get_all_published_book_download();
         $data['theme_asset_url'] = base_url() . $this->config->item('WEBSITE_ASSET');
         $data['Title'] = 'Xcognitive';
